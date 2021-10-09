@@ -56,6 +56,22 @@ body {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+/* yellow-background{
+	background-color: rgb(238,196,40);
+	background-color: linear-gradient(22deg, rgba(238,196,40,0.846673703661152) 32%, rgba(251,251,251,1) 79%);
+	height: '100vh';
+  	min-height : '100vh'; 
+	width: '100vw' ;
+} */
+
+.yellow-background{
+	background: rgb(238,196,40);
+	background: linear-gradient(22deg, rgba(238,196,40,0.846673703661152) 32%, rgba(251,251,251,1) 79%);
+	height: 100vh;
+  min-height : 100vh; 
+	width: 100vw ;
+}
+
 [tabindex="-1"]:focus:not(:focus-visible) {
 	outline: 0 !important;
 }
