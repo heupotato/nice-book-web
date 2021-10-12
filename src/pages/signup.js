@@ -97,17 +97,23 @@ function SignUp(){
     };
 
     return(
-        <div className='yellow-background'>
+        <div className='yellow-background signup'>
             <ToastContainer />
             <div className='dialog-bg center'>
-                <img src='./images/sign-up.png' className='signup-background'></img>
-                <div style={{margin:'10px'}}>
+                <div className='signup-background'>
+                    <img src='./images/sign-up.png' ></img>
+                </div>
+                <div>
                     <div className='block-center'>
-                        <img src='./images/Logo.png'></img>
-                        <h4 style={{marginRight:'20px'}}><Link to='#'  style={{ textDecoration: 'none', color:'black'}}>Login </Link> &nbsp;&nbsp; 
-                        <Link to='#'  style={{ textDecoration: 'none', color:'#FCBD10'}}>Signup</Link> </h4>
+                        <div>
+                            <img src='./images/Logo.png'></img>    
+                        </div>
+                        <div>
+                            <h4 style={{marginRight:'20px'}}><Link to='#'  style={{ textDecoration: 'none', color:'black'}}>Login </Link> &nbsp;&nbsp; 
+                            <Link to='#'  style={{ textDecoration: 'none', color:'#FCBD10'}}>Signup</Link> </h4>
+                        </div>
                     </div>
-                    <div className='blank'></div>
+
                     <div className='signup-form'>
 
                         <h1 className='title'>SIGN UP</h1>
