@@ -20,14 +20,14 @@ function Login() {
                     <div className="headerLogin">
                         <img src='./images/Logo.png'></img>
                         <div>
-                            <h4 style={{margin:'20px', marginLeft: '130px'}}><Link to='#'  style={{ textDecoration: 'none', color:'#FCBD10'}}>Login </Link> &nbsp;&nbsp;
+                            <h4 style={{margin:'20px', marginLeft: '130px'}}><Link to='/signup'  style={{ textDecoration: 'none', color:'#FCBD10'}}>Login </Link> &nbsp;&nbsp;
                             <Link to='#'  style={{ textDecoration: 'none', color:'black'}}>Signup</Link> </h4>
                         </div>
                     </div>
                     <div className='blank'></div>
                     <div className='login-form'>
                         <h1 className='login-title'>LOG IN</h1>
-                        <h5 className='login-subtitle'>Don't have an account? {' '} <Link to ='#' style={{color:'#FCBD10'}}>Sign up</Link></h5>
+                        <h5 className='login-subtitle'>Don't have an account? {' '} <Link to ='/signup' style={{color:'#FCBD10'}}>Sign up</Link></h5>
 
                         <div className="form-group input-icons">
                             <i className="fa fa-user-o label-icon fa-2x" aria-hidden="true"></i>
