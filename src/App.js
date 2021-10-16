@@ -5,7 +5,7 @@ import SignUp from './pages/signup';
 
 function App() {
   return (
-    <div >
+    <div className="app-container">
       <BrowserRouter>
         <Route path="/" component={SignUp}></Route>
       </BrowserRouter>
