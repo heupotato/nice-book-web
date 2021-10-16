@@ -3,27 +3,38 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/api/v1/auth/";
 
 class AuthService {
-    login (email, password) {
-        return axios.post(API_URL + "login", {
+    async login (email, password) {
+        return await axios.post(API_URL + "login", {
             email,
             password
         }).then(res => {
-            if (res.data.token) {
-                localStorage.setItem("user", JSON.stringify(res.data));
-                localStorage['email'] = res.data.email;
-                localStorage['password'] = res.data.password;
-                localStorage['accessToken'] = res.data.token;
+                if (res.data) {
+                    localStorage.setItem("user", JSON.stringify(res.data));
+                    localStorage['email'] = res.data.email;
+                    localStorage['password'] = res.data.password;
+                    localStorage['accessToken'] = res.data.token;
+                }
+                return res.data;
+            },
+            error => {
+                return error.response.data;
             }
-            return res.data
-        })
+        )
     }
 
-    signup (email, userName, password) {
-        return axios.post(API_URL + "register", {
+    async signup (email, userName, password) {
+        return await axios.post(API_URL + "register", {
             email,
+            //NEED_TODO: userName -> username
             userName,
             password
-        })
+        }).then(res => {
+                return res.data;
+            },
+            error => {
+                return error.response.data;
+            }
+        )
     }
 
     logout () {
@@ -33,13 +44,30 @@ class AuthService {
         localStorage.removeItem("accessToken");
     }
 
-    verify_account (email, code) {
-        return axios.put(API_URL + "verify", {
+    async verifyCode (email, code) {
+        return await axios.put(API_URL + "verify", {
             email,
             code
-        })
+        }).then(res => {
+                return res.data;
+            },
+            error => {
+                return error.response.data;
+            }
+        )
+    }
+
+    async resendCode (email) {
+        return await axios.put(API_URL + "resend-verify-code", {
+            email
+        }).then(res => {
+                return res.data;
+            },
+            error => {
+                return error.response.data;
+            }
+        )
     }
 }
 
 export default new AuthService();
-
