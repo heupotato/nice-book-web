@@ -63,7 +63,7 @@ function SignUp(){
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setState({
+        await setState({
             ...state, 
             errors: validator.validate(state)
         })
@@ -109,7 +109,7 @@ function SignUp(){
                             <img src='./images/Logo.png'></img>    
                         </div>
                         <div>
-                            <h4 style={{marginRight:'20px'}}><Link to='#'  style={{ textDecoration: 'none', color:'black'}}>Login </Link> &nbsp;&nbsp; 
+                            <h4 style={{marginRight:'20px'}}><Link to='/login'  style={{ textDecoration: 'none', color:'black'}}>Login </Link> &nbsp;&nbsp; 
                             <Link to='#'  style={{ textDecoration: 'none', color:'#FCBD10'}}>Signup</Link> </h4>
                         </div>
                     </div>
@@ -118,7 +118,7 @@ function SignUp(){
 
                         <h1 className='title'>SIGN UP</h1>
                         <h5 className='subtitle'>Already have an account? {' '}
-                        <Link to ='#' style={{color:'#FCBD10'}}>Log in</Link></h5>
+                        <Link to ='/login' style={{color:'#FCBD10'}}>Log in</Link></h5>
 
                         <div className="form-group input-icons">
                             <i class="fa fa-envelope-o icon fa-2x" aria-hidden="true"></i>
