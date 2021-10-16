@@ -12,8 +12,9 @@ class AuthService {
                 localStorage.setItem("user", JSON.stringify(res.data));
                 localStorage['email'] = res.data.email;
                 localStorage['password'] = res.data.password;
+                localStorage['accessToken'] = res.data.token;
             }
-            return res.data;
+            return res.data
         })
     }
 
@@ -29,6 +30,7 @@ class AuthService {
         localStorage.removeItem("user");
         localStorage.removeItem("email");
         localStorage.removeItem("password");
+        localStorage.removeItem("accessToken");
     }
 
     verify_account (email, code) {
