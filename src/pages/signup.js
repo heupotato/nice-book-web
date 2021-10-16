@@ -1,21 +1,33 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import { InputText } from "primereact/inputtext";
+import React, { Component, useEffect } from 'react';
+import { Link, useHistory} from "react-router-dom";
 import { useState } from 'react';
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Validator from '../services/validator';
+import AuthService from '../api-services/auth-service';
+import axios from 'axios';
 
 function SignUp(){
     const [state, setState] = useState(
         {
             username: '',
             email: '',
-            password: '', 
-            errors: {}
+            password: '',
         }
     );
-    
+
+    const [errors, setErrors] = useState(
+    );
+
+    const history = useHistory();
+
+    useEffect(() => {
+        setErrors({
+            username: 'The username field is required.',
+            email: 'The email is required.',
+            password: 'The password field is required.'})
+    }, [])
+
     const requiredWith = (value, field, state) => (!state[field] && !value) || !!value;
 
     const rules = [
@@ -59,70 +71,91 @@ function SignUp(){
           ...state,
           [evt.target.name]: value,
         });
+        setErrors(validator.validate({
+            ...state,
+            [evt.target.name]: value,
+        }))
       };
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setState({
-            ...state, 
-            errors: validator.validate(state)
-        })
-        var isValidated = true; 
-        if (state.errors.username != ''){
-            toast.error(state.errors.username,{
-                position: toast.POSITION.BOTTOM_LEFT
-            }); 
-            isValidated = false; 
+
+        var isValidated = true;
+        // console.log(isValidated);
+        // console.log(errors);
+
+        if (Object.entries(errors).length === 0){
+            const res = await AuthService.signup(state.email, state.username, state.password);
+            if(res) {
+                toast.success("Signup successfully 👌",{
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+                let email = state.email;
+                history.push({
+                    pathname: '/verify',
+                    state: email
+                });
+            }
         }
-        if (state.errors.email != ''){
-            toast.error(state.errors.email,{
-                position: toast.POSITION.BOTTOM_LEFT
-            }); 
-            isValidated = false; 
+        else {
+            if (errors.username !== ''){
+                toast.error(errors.username,{
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+                isValidated = false;
+                console.log('username');
+            }
+            if (errors.email !== '' ){
+                toast.error(errors.email,{
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+                isValidated = false;
+                console.log('email');
+            }
+            if (errors.password !== ''){
+                toast.error(errors.password,{
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+                isValidated = false;
+                console.log('password');
+            }
         }
-        if (state.errors.password != ''){
-            toast.error(state.errors.password,{
-                position: toast.POSITION.BOTTOM_LEFT
-            }); 
-            isValidated = false; 
-        }
-        if (isValidated == true)
-            toast.success("Signup successfully 👌",{
-                position: toast.POSITION.BOTTOM_LEFT
-            });
-        else toast.error("Invalid inputs! Please try again 🤯",{
-            position: toast.POSITION.BOTTOM_LEFT
-        })
-        console.log(state); 
+
     };
 
     return(
-        <div className='yellow-background'>
+        <div className='yellow-background signup'>
             <ToastContainer />
             <div className='dialog-bg center'>
-                <img src='./images/sign-up.png' className='signup-background'></img>
-                <div style={{margin:'10px'}}>
+                <div className='signup-background'>
+                    <img src='./images/sign-up.png' ></img>
+                </div>
+                <div>
                     <div className='block-center'>
-                        <img src='./images/Logo.png'></img>
-                        <h4 style={{marginRight:'20px'}}><Link to='#'  style={{ textDecoration: 'none', color:'black'}}>Login </Link> &nbsp;&nbsp; 
-                        <Link to='#'  style={{ textDecoration: 'none', color:'#FCBD10'}}>Signup</Link> </h4>
+                        <div>
+                            <img src='./images/Logo.png'></img>
+                        </div>
+                        <div>
+                            <h4 style={{marginRight:'20px'}}><Link to='/login'  style={{ textDecoration: 'none', color:'black'}}>Login </Link> &nbsp;&nbsp;
+                            <Link to='#'  style={{ textDecoration: 'none', color:'#FCBD10'}}>Signup</Link> </h4>
+                        </div>
                     </div>
-                    <div className='blank'></div>
+
                     <div className='signup-form'>
 
                         <h1 className='title'>SIGN UP</h1>
                         <h5 className='subtitle'>Already have an account? {' '}
-                        <Link to ='#' style={{color:'#FCBD10'}}>Log in</Link></h5>
+                        <Link to ='/login' style={{color:'#FCBD10'}}>Log in</Link></h5>
 
                         <div className="form-group input-icons">
                             <i class="fa fa-envelope-o icon fa-2x" aria-hidden="true"></i>
-                            <input type="text" className="form-control input input-field" name="email" 
+                            <input type="text" className="form-control input input-field" name="email"
                             id="email" placeholder="Email" onChange={handleChange}/>
                             <i class="fa fa-user-o icon fa-2x" aria-hidden="true"></i>
-                            <input type="text" className="form-control input input-field" name="username" 
+                            <input type="text" className="form-control input input-field" name="username"
                             id="username" placeholder="Username" onChange={handleChange}/>
                             <i class="fas fa-lock  icon fa-2x"></i>
-                            <input type="password" className="form-control input input-field" name="password" 
+                            <input type="password" className="form-control input input-field" name="password"
                             id="password" placeholder="Password" onChange={handleChange}/>
                         </div>
 
@@ -130,9 +163,9 @@ function SignUp(){
                         <h5 className="subtitle forgot-pass"><Link to = '#' style={{color:'grey'}}>Forgot your password?</Link></h5>
                     </div>
                 </div>
-            </div>   
+            </div>
         </div>
-    ); 
+    );
 }
 
-export default SignUp; 
+export default SignUp;
