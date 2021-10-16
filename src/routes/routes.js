@@ -1,5 +1,6 @@
 import SignUp from '../pages/signup';
 import Login from '../pages/login';
+import Verify from '../pages/verify';
 export const ROUTES = [
     {
         path: "/signup", 
@@ -10,6 +11,11 @@ export const ROUTES = [
         path: "/login", 
         exact: true, 
         main: Login
+    }, 
+    {
+        path: "/verify", 
+        exact: true, 
+        main: Verify
     }
 ]
 

@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import { InputText } from "primereact/inputtext";
+import React, { Component, useEffect } from 'react';
+import { Link, useHistory} from "react-router-dom";
 import { useState } from 'react';
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,9 +11,20 @@ function SignUp(){
             username: '',
             email: '',
             password: '', 
-            errors: {}
         }
     );
+
+    const [errors, setErrors] = useState(
+    ); 
+
+    const history = useHistory(); 
+
+    useEffect(() => {
+        setErrors({
+            username: 'The username field is required.', 
+            email: 'The email is required.', 
+            password: 'The password field is required.'})
+    }, [])
     
     const requiredWith = (value, field, state) => (!state[field] && !value) || !!value;
 
@@ -59,41 +69,54 @@ function SignUp(){
           ...state,
           [evt.target.name]: value,
         });
+        setErrors(validator.validate({
+            ...state, 
+            [evt.target.name]: value,
+        }))
       };
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await setState({
-            ...state, 
-            errors: validator.validate(state)
-        })
+
         var isValidated = true; 
-        if (state.errors.username != ''){
-            toast.error(state.errors.username,{
-                position: toast.POSITION.BOTTOM_LEFT
-            }); 
-            isValidated = false; 
-        }
-        if (state.errors.email != ''){
-            toast.error(state.errors.email,{
-                position: toast.POSITION.BOTTOM_LEFT
-            }); 
-            isValidated = false; 
-        }
-        if (state.errors.password != ''){
-            toast.error(state.errors.password,{
-                position: toast.POSITION.BOTTOM_LEFT
-            }); 
-            isValidated = false; 
-        }
-        if (isValidated == true)
+        console.log(isValidated);
+        console.log(errors); 
+    
+        if (Object.entries(errors).length === 0){
+            //TODO: Chạy API tại chỗ này, nếu API phản hồi thành công thì thêm code từ dòng 87 - 94 vào trong đó 
             toast.success("Signup successfully 👌",{
                 position: toast.POSITION.BOTTOM_LEFT
-            });
-        else toast.error("Invalid inputs! Please try again 🤯",{
-            position: toast.POSITION.BOTTOM_LEFT
-        })
-        console.log(state); 
+            }); 
+            let email = state.email; 
+            history.push({
+                pathname: '/verify', 
+                state: email
+            }); 
+        }
+        else {
+            if (errors.username !== ''){
+                toast.error(errors.username,{
+                    position: toast.POSITION.BOTTOM_LEFT
+                }); 
+                isValidated = false; 
+                console.log('username'); 
+            }
+            if (errors.email !== '' ){
+                toast.error(errors.email,{
+                    position: toast.POSITION.BOTTOM_LEFT
+                }); 
+                isValidated = false; 
+                console.log('email'); 
+            }
+            if (errors.password !== ''){
+                toast.error(errors.password,{
+                    position: toast.POSITION.BOTTOM_LEFT
+                }); 
+                isValidated = false; 
+                console.log('password'); 
+            }
+        }
+        
     };
 
     return(
