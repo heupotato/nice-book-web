@@ -33,7 +33,7 @@ const showRoutesPublic = (routes) => {
 	return result;
 }
 
-const showRotesPrivateManager = (routes, isLoggedIn, role) => {
+const showRoutesPrivateManager = (routes, isLoggedIn, role) => {
 	var result = null;
 	if (routes.length > 0) {
 		result = routes.map((route, index) => {
