@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
-import { Link, useLocation} from "react-router-dom";
-import { useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+import {Link, useHistory, useLocation} from "react-router-dom";
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthService from '../api-services/auth-service';
 
 function Verify(){
-
     const location = useLocation();
-    console.log(location.state);
-    //NOTE: Nếu cần email gọi biến location.state.email
+    console.log(location.state); //NOTE: Nếu cần email gọi location.state
 
     const [state, setState]  = useState();
 
@@ -20,14 +17,19 @@ function Verify(){
             [evt.target.name]: value,
         });
     };
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await AuthService.verifyCode(location.state, state.verifyCode);
         if(JSON.stringify(res.message) == "\"VERIFY_ACCOUNT_SUCCESS\"") {
             toast.success("Signup successfully 👌",{
-                position: toast.POSITION.BOTTOM_LEFT
-            });
+                position: toast.POSITION.BOTTOM_LEFT});
+            setTimeout(() => {
+                history.push({
+                    pathname: '/login',
+                });
+            }, 3000);
         }
         else{
             toast.error("Verify code is not true!",{
@@ -35,6 +37,8 @@ function Verify(){
             });
         }
     }
+
+
 
     const handleResendCode = async (e) => {
         e.preventDefault();

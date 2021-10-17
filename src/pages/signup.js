@@ -6,8 +6,21 @@ import 'react-toastify/dist/ReactToastify.css';
 import Validator from '../services/validator';
 import AuthService from '../api-services/auth-service';
 import axios from 'axios';
+import Modal from "react-modal";
+
+const customStyles = {
+    content: {
+        width: '700px',
+        top: '30%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        transform: 'translate(-50%, -50%)',
+    },
+};
 
 function SignUp(){
+    const [modalIsOpen, setIsOpen] = React.useState(false); //Modal
     const [state, setState] = useState(
         {
             username: '',
@@ -98,9 +111,7 @@ function SignUp(){
                 });
             }
             else if(JSON.stringify(res.message) == "\"EMAIL_ALREADY_EXIST\""){
-                toast.error("Email already exist 😞",{
-                    position: toast.POSITION.BOTTOM_LEFT
-                });
+                openModal();
             }
         }
         else {
@@ -129,8 +140,28 @@ function SignUp(){
 
     };
 
+    //Modal function
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
     return(
         <div className='yellow-background signup'>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+            >
+                <h1>Error</h1>
+                <div className="line"></div>
+                <div style={{marginBottom: '30px', marginTop: '30px', fontFamily: 'Montserrat', fontSize: '22px'}}>Email already exists!</div>
+                <div className="line"></div>
+                <button className="btn btn-primary btn-lg button-center" onClick={closeModal}>OK</button>
+            </Modal>
             <ToastContainer />
             <div className='dialog-bg center'>
                 <div className='signup-background'>
