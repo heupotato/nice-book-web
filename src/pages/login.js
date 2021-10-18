@@ -1,5 +1,5 @@
 import React, {Component, useEffect, useState} from "react";
-import {Link, userHistory} from "react-router-dom";
+import {Link, useHistory, useLocation, userHistory} from "react-router-dom";
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Validator from '../services/validator';
@@ -28,6 +28,8 @@ function Login() {
             password: '',
         }
     );
+
+    //const history = useHistory();
 
     useEffect(() => {
         setErrors({
@@ -132,7 +134,7 @@ function Login() {
             >
                 <h1>Error</h1>
                 <div className="line"></div>
-                <div style={{marginBottom: '30px', marginTop: '30px', fontFamily: 'Montserrat', fontSize: '22px'}}>Your email or password is not correct! Please try again...</div>
+                <div style={{marginBottom: '30px', marginTop: '30px', fontFamily: 'Montserrat', fontSize: '22px'}}>Your email or password is not correct! Please try again.</div>
                 <div className="line"></div>
                 <button className="btn btn-primary btn-lg button-center" onClick={closeModal}>OK</button>
             </Modal>
