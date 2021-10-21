@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import {Link, useHistory, useLocation} from "react-router-dom";
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AuthService from '../api-services/auth-service';
+import AuthService from '../../api-services/auth-service';
 
 function Verify(){
     const location = useLocation();
@@ -23,7 +23,7 @@ function Verify(){
         e.preventDefault();
         const res = await AuthService.verifyCode(location.state, state.verifyCode);
         if(JSON.stringify(res.message) == "\"VERIFY_ACCOUNT_SUCCESS\"") {
-            toast.success("Signup successfully 👌",{
+            toast.success("Signup successfully 👌 Redirecting...",{
                 position: toast.POSITION.BOTTOM_LEFT});
             setTimeout(() => {
                 history.push({

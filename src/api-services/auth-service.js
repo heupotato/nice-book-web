@@ -15,8 +15,7 @@ class AuthService {
                     localStorage['accessToken'] = res.data.token;
                 }
                 return res.data;
-            },
-            error => {
+            }, error => {
                 return error.response.data;
             }
         )
@@ -30,11 +29,43 @@ class AuthService {
             password
         }).then(res => {
                 return res.data;
-            },
-            error => {
+            }, error => {
                 return error.response.data;
             }
         )
+    }
+
+    async forgotPassword (email) {
+        return await axios.post(API_URL + "forgot-password", {
+            email
+        }).then(res => {
+            return res.data;
+        }, error => {
+            return error.response.data;
+        })
+    }
+
+    async resetPassword (email, code, newPassword) {
+        return await axios.put(API_URL + "reset-password", {
+            email,
+            code,
+            newPassword
+        }).then(res => {
+                return res.data;
+            }, error => {
+                return error.response.data;
+            }
+        )
+    }
+
+    async resendPasswordCode (email) {
+        return await axios.put(API_URL + "resend-password-code", {
+            email
+        }).then(res => {
+            return res.data;
+        }, error => {
+            return error.response.data;
+        })
     }
 
     logout () {
@@ -50,8 +81,7 @@ class AuthService {
             code
         }).then(res => {
                 return res.data;
-            },
-            error => {
+            }, error => {
                 return error.response.data;
             }
         )
@@ -62,8 +92,7 @@ class AuthService {
             email
         }).then(res => {
                 return res.data;
-            },
-            error => {
+            }, error => {
                 return error.response.data;
             }
         )
