@@ -26,7 +26,7 @@ function Homepage()
                 <div className="row">
                     <div className="col-md-7 col-sm-6 col-xs-12">
                         <div className="sub">
-                            <h1>Get immediate access to books. audiobooks, magazines and more for just $8.99/month</h1>
+                            <h1>Get immediate access to books, audiobooks, magazines and more for just $8.99/month</h1>
                             <div className='blank'></div>
                             <input type="button" className="btn-sub" value="Subcribe now" onClick={gotoPayment}/>
                         </div>
