@@ -23,7 +23,7 @@ function Verify(){
         e.preventDefault();
         const res = await AuthService.verifyCode(location.state, state.verifyCode);
         if(JSON.stringify(res.message) == "\"VERIFY_ACCOUNT_SUCCESS\"") {
-            toast.success("Signup successfully 👌",{
+            toast.success("Signup successfully 👌 Redirecting...",{
                 position: toast.POSITION.BOTTOM_LEFT});
             setTimeout(() => {
                 history.push({

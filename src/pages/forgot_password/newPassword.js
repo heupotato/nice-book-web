@@ -81,7 +81,7 @@ function NewPassword(){
             const res = await AuthService.resetPassword(location.state, state.code, state.newPassword);
             console.log(res.message);
             if(JSON.stringify(res.message) == "\"RESET_PASSWORD_SUCCESS\"") {
-                toast.success("reset password successfully 👌",{
+                toast.success("Reset password successfully 👌 Redirecting...",{
                     position: toast.POSITION.BOTTOM_LEFT
                 });
                 setTimeout(() => {
@@ -157,11 +157,11 @@ function NewPassword(){
                                    id="newPassword" placeholder="New password" onChange={handleChange}/>
                         </div>
 
-                        <button type="button" class="btn btn-primary btn-lg button-center" onClick={handleSubmit}>RESET</button>
+                        <button type="button" class="btn btn-primary btn-lg button-center" onClick={handleSubmit}>RESET PASSWORD</button>
                         <h6 className='subtitle forgot-pass'
                             style={{color: 'grey', marginTop: '20px', cursor: 'pointer'}}
                             onClick={handleResendCode}
-                        >Resend a new code to email?</h6>
+                        >Resend a new code</h6>
                     </div>
                 </div>
             </div>

@@ -57,7 +57,7 @@ function ForgotPassword(){
                         </div>
                     </div>
                     <div className='signup-form'>
-                        <h1 className='title'>Forgot password?</h1>
+                        <h1 className='title'>Forgot password</h1>
 
                         <div className="blank"></div>
                         <div className="form-group input-icons">
