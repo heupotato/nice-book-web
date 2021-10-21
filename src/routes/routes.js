@@ -3,6 +3,7 @@ import Login from '../pages/login_signup/login';
 import Verify from '../pages/login_signup/verify';
 import ForgotPassword from "../pages/forgot_password/forgotPassword";
 import NewPassword from "../pages/forgot_password/newPassword";
+import Homepage from '../pages/homepage';
 export const ROUTES = [
     {
         path: "/signup",
@@ -28,6 +29,11 @@ export const ROUTES = [
         path: "/new-password",
         exact: true,
         main: NewPassword
+    }, 
+    {
+        path: "/", 
+        exact: true, 
+        main: Homepage
     }
 ]
 
