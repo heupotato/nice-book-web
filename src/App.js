@@ -8,7 +8,7 @@ import LocalStorageService from './services/localStorage';
 function App() {
 
   const isLoggedIn = () => {
-	  return LocalStorageService.token ===""; 
+	  return LocalStorageService.token !==""; 
   }
  
   return (
