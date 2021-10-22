@@ -32,7 +32,7 @@ function Homepage()
                         </div>
                     </div>
                     <div className="col-md-5 col-sm-6 col-xs-12">
-                        <img className="img-body" src="./images/ebook-thumb.png" alt="" srcset=""/>
+                        <img className="img-body" src="./images/ebook-thumb.png" alt=""/>
                     </div>
                 </div>   
             </div>
