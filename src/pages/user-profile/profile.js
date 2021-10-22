@@ -29,8 +29,8 @@ function UserProfile()
 
     //TODO: Check API code here
     useEffect(() => {
-        ProfileService.getProfileUser(userID).then(respone => {
-            setUser(respone.data)
+        ProfileService.getProfileUser(userID).then(response => {
+            setUser(response.data)
         })
         .catch(err => console.log(err))
     }, [])
@@ -74,7 +74,7 @@ function UserProfile()
                 <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                     <div className='profile-col'>
                         <div>
-                            <img className='profile-avatar' src={userState.avatar === '' ? defaultAvatar : userState.avatar}></img>
+                            <img className='profile-avatar' src={userState.avatar === '' || typeof userState.avatar ==='undefined' ? defaultAvatar : userState.avatar}></img>
                         </div>
                         <div className='blank'></div>
                         <Divider>PROFILE</Divider>
