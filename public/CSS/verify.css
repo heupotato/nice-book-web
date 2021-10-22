@@ -1,0 +1,6 @@
+.dialog-bg-verify {
+  display: flex;
+  background: white;
+  border-radius: 65px;
+  padding-right: 15px;
+}

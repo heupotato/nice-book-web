@@ -3,43 +3,30 @@
   margin-bottom: auto;
 }
 
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.rcorners {
-  border-radius: 25px;
-  border: 2px solid white;
-  width: 80vw;
-  height: 80vh;
-  margin: 0;
-  padding: 0;
+.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .dialog-bg {
-  display: grid;
-  grid-template-columns: 350px 1fr;
-  height: 80vh;
-  width: 60vw;
+  display: flex;
+  align-items: center;
   background: white;
-  border-radius: 90px;
+  border-radius: 65px;
+  padding-right: 15px;
 }
 
 .block-center {
+  padding: 20px;
   display: flex;
   justify-content: space-between;
-  justify-items: center;
+  align-items: center;
 }
 
-.signup-background {
-  height: 100%;
-  max-width: 100%;
-  object-fit: fill;
+.signup-background img {
+  height: 603px;
 }
 
 .title {
@@ -52,25 +39,38 @@
 }
 
 .signup-form {
-  margin-left: 70px;
-  margin-right: 70px;
+  padding: 15px 70px;
 }
 
 .input {
-  width: 400px;
-  height: 45px;
-  left: 49%;
-  top: 150px;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
-  font-size: 23px;
+  font-size: 20px;
   border: 0;
-  outline: 0;
+  outline: none;
   color: black;
   background: transparent;
   border-bottom: 1px solid black;
-  margin-top: 35px;
-  margin-bottom: 35px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+  border-bottom: 1px solid black !important;
 }
 
 .input-icons i {
@@ -101,7 +101,7 @@
   border-color: #ffc700;
   font-family: "Montserrat", sans-serif;
   font-weight: 200;
-  font-size: 23px;
+  font-size: 20px;
   min-width: 200px;
 }
 
