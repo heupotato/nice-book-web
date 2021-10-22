@@ -765,7 +765,7 @@ progress {
   }
 }
 .row {
-  --bs-gutter-x: 1.5rem;
+  /* --bs-gutter-x: 1.5rem; */
   --bs-gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
@@ -3828,6 +3828,12 @@ fieldset:disabled .btn {
 }
 .blank {
   padding-bottom: 25px;
+}
+.blank20 {
+  padding-bottom: 20px;
+}
+.blank15 {
+  padding-bottom: 15px;
 }
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 /* .active, .collapsible:hover {
