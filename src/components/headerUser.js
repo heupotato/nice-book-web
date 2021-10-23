@@ -38,7 +38,7 @@ function HeaderUser() {
                         </div>
                     </div>
                     <div className="header-component left-component">
-                        <button type="button" className="btn-login-header" >Sign out</button>
+                        <button type="button" className="btn-login-header" onClick={handleSignOut}>Sign out</button>
                     </div>
                 </div>
             </div>
