@@ -4,6 +4,7 @@ import Verify from '../pages/login_signup/verify';
 import ForgotPassword from "../pages/forgot_password/forgotPassword";
 import NewPassword from "../pages/forgot_password/newPassword";
 import Homepage from '../pages/homepage';
+import UserProfile from '../pages/user-profile/profile';
 export const ROUTES = [
     {
         path: "/signup",
@@ -34,7 +35,12 @@ export const ROUTES = [
         path: "/", 
         exact: true, 
         main: Homepage
-    }
+    }, 
+    // {
+    //     path: '/profile', 
+    //     exact: true, 
+    //     main: UserProfile
+    // }
 ]
 
 export const PRIVATE_ROUTES_ADMIN = [
@@ -46,5 +52,9 @@ export const PRIVATE_ROUTES_MANAGER = [
 ]
 
 export const PRIVATE_ROUTES_USER = [
-
+    {
+        path: '/profile', 
+        exact: true, 
+        main: UserProfile
+    }
 ]
