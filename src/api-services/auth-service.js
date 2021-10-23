@@ -78,22 +78,19 @@ class AuthService {
             email,
             code
         }).then(res => {
-                return res.data;
-            }, error => {
-                return error.response.data;
-            }
-        )
+            return res.data;
+        }, error => {
+            return error.response.data;
+        })
     }
 
     async resendCode (email) {
         return await axios.put(API_URL + "resend-verify-code", {
             email
-        }).then(res => {
-                return res.data;
-            }, error => {
-                return error.response.data;
-            }
-        )
+        }).then(res => { return res.data;
+        }, error => {
+            return error.response.data;
+        })
     }
 }
 
