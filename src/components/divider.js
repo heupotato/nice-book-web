@@ -1,6 +1,5 @@
 function Divider(prop)
 {
-    console.log(prop.children); 
     return(
         <div className="d-container">
             <span className="d-content">

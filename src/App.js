@@ -8,9 +8,10 @@ import LocalStorageService from './services/localStorage';
 function App() {
 
   const isLoggedIn = () => {
-	  return LocalStorageService.token !==""; 
+	//   return true
+	  return (LocalStorageService.token !=="" &&  LocalStorageService.token !==null ); 
   }
- 
+
   return (
     <div className="app-container">
       <Router>

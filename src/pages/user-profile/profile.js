@@ -5,6 +5,7 @@ import Divider from "../../components/divider";
 import moment from "moment";
 import LocalStorageService from "../../services/localStorage";
 
+
 function UserProfile()
 {
     //NOTE: For API: After login, store userID in localStorage and uncomment the line below
@@ -21,7 +22,7 @@ function UserProfile()
         DoB: '2000-06-30', 
         phone: '(+84) 912 345 678',
         address: '11 Dien Bien Phu Street, Thanh Khe, Da Nang', 
-        email: 'ITNihongo.team2@gmail.com', 
+        email: 'ITNihongo.team@gmail.com', 
         payment: 'Vietcombank',
         avatar: 'https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/241740237_1243042599502750_9188172257848413325_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=LbP5CcXmbYgAX96DDcy&_nc_ht=scontent.fsgn2-4.fna&oh=946aa4275ea25d4e38b786f37bca766b&oe=6198CCEE'
     })
@@ -122,7 +123,7 @@ function UserProfile()
                                 </div>
                             </div>
                             
-                            <div class="row">
+                            <div class="row  email-row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 info-title">
                                     <h6>Email: </h6>
                                 </div>
