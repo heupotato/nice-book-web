@@ -9,10 +9,9 @@ class AuthService {
             password
         }).then(res => {
                 if (res.data) {
-                    localStorage.setItem("user", JSON.stringify(res.data));
-                    localStorage['email'] = res.data.email;
-                    localStorage['password'] = res.data.password;
-                    localStorage['accessToken'] = res.data.token;
+                    localStorage.setItem("user", JSON.stringify(res.data.body));
+                    localStorage['email'] = res.data.body.user.email;
+                    localStorage['accessToken'] = res.data.body.token;
                 }
                 return res.data;
             }, error => {
@@ -71,7 +70,6 @@ class AuthService {
     logout () {
         localStorage.removeItem("user");
         localStorage.removeItem("email");
-        localStorage.removeItem("password");
         localStorage.removeItem("accessToken");
     }
 
@@ -80,22 +78,19 @@ class AuthService {
             email,
             code
         }).then(res => {
-                return res.data;
-            }, error => {
-                return error.response.data;
-            }
-        )
+            return res.data;
+        }, error => {
+            return error.response.data;
+        })
     }
 
     async resendCode (email) {
         return await axios.put(API_URL + "resend-verify-code", {
             email
-        }).then(res => {
-                return res.data;
-            }, error => {
-                return error.response.data;
-            }
-        )
+        }).then(res => { return res.data;
+        }, error => {
+            return error.response.data;
+        })
     }
 }
 
