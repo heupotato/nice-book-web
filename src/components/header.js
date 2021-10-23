@@ -33,7 +33,7 @@ function Header() {
                         <input className="search-input form-control input-field-search" placeholder="Search any book..." name="search" type="text"/>
                         <i className="fa fa-search icon-search fa-lg"></i>
                     </div>
-                    <div className="header-component">
+                    <div className="header-component left-component">
                         <button type="button" className="btn-login-header" onClick={handleDirectToLogin}>Login</button>
                         <button type="button" className="btn-signup-header" onClick={handleDirectToSignup}>Sign up</button>
                     </div>
