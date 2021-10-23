@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { ROUTES, PRIVATE_ROUTES_ADMIN, PRIVATE_ROUTES_MANAGER, PRIVATE_ROUTES_USER } from './routes/routes';
 import './App.css';
 import Footer from './components/footer';
-import Header from './components/headerUser';
+import Header from './components/header';
+import HeaderUser from './components/headerUser'
 import LocalStorageService from './services/localStorage';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
   return (
     <div className="app-container">
       <Router>
-	    <Header/>
+	    {isLoggedIn() ? <HeaderUser/> : <Header/>}
         <Switch>
           {
             showRoutesPublic(ROUTES)
