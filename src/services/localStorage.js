@@ -11,6 +11,10 @@ class LocalStorageService{
     static get token(){
         return localStorage.getItem('accessToken'); 
     }
+
+    static get fullname(){
+        return localStorage.getItem('fullname'); 
+    }
 }
 
 export default LocalStorageService
