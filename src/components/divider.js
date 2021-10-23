@@ -1,6 +1,5 @@
 function Divider(prop)
 {
-    console.log(prop.children); 
     return(
         <div className="d-container">
             <span className="d-content">
@@ -8,6 +7,6 @@ function Divider(prop)
             </span>
             <div className="d-border" />
         </div>
-    ); 
+    );
 }
-export default Divider; 
+export default Divider;

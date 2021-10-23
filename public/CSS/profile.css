@@ -80,6 +80,10 @@
   display: table;
 }
 
+.email-row {
+  overflow-x: auto;
+}
+
 .p-edit-button {
   display: block;
   border-radius: 5px;
