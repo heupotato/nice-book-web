@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import ProfileService from "../../api-services/profile-service";
 import Divider from "../../components/divider";
 import moment from "moment";
@@ -9,12 +9,13 @@ import LocalStorageService from "../../services/localStorage";
 function UserProfile()
 {
     //NOTE: For API: After login, store userID in localStorage and uncomment the line below
-    //userID = LocalStorageService.userID;
+    //userID = '616cca8018f451057a446ff2';
 
     const defaultAvatar = 'https://docsbydesign.com/wp-content/uploads/2015/08/readingbook.jpg';
 
     //NOTE: FOR API: This is mock userID, you should comment it and user the above code
-    var userID = '616cca8018f451057a446ff2';
+    const history = useHistory();
+    var userID = LocalStorageService.userID;
 
     const [userState, setUser] = useState({
         fullname: 'Tien Dat Nguyen',
@@ -38,6 +39,9 @@ function UserProfile()
 
     const handleEdit = () => {
         //TODO: After finishing Edit Profile, Navigate in this block
+        history.push({
+            pathname: '/profile/edit',
+        });
     }
 
     let mockReading = ['https://images-na.ssl-images-amazon.com/images/I/71wdVdp0ncL.jpg',

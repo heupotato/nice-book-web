@@ -6,6 +6,7 @@ import Validator from '../../services/validator';
 import AuthService from '../../api-services/auth-service';
 import axios from 'axios';
 import Modal from 'react-modal';
+import authHeader from "../../api-services/auth-header";
 
 const customStyles = {
     content: {
@@ -22,6 +23,7 @@ function Login() {
     const [modalIsOpen, setIsOpen] = React.useState(false); //Modal
     const [isChecked, setIsChecked] = useState(false);
     const [errors, setErrors] = useState();
+    const history = useHistory();
     const [state, setState] = useState(
         {
             email: '',
@@ -93,6 +95,12 @@ function Login() {
                 toast.success("Login successfully! 🎉",{
                     position: toast.POSITION.BOTTOM_LEFT
                 });
+                setTimeout(() => {
+                    history.push({
+                        pathname: '/profile',
+                        //headers: authHeader(),
+                    });
+                }, 1000);
             }
             else if((JSON.stringify(res.message) == "\"INCORECT_PASSWORD\"" || JSON.stringify(res.message) == "\"INCORECT_EMAIL\"")){
                 openModal();

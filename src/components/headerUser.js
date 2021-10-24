@@ -13,11 +13,14 @@ function HeaderUser() {
     }
 
     const handleSignOut = () => {
-        //TODO: Call AuthSerivce Here to Logout and then refresh page 
+        AuthService.logout();
+        history.push({
+            pathname: '/',
+        });
     }
 
-    //NOTE: This line get fullname from localstorage, check localStorage.js file 
-    const fullname = LocalStorageService.fullname; 
+    //NOTE: This line get fullname from localstorage, check localStorage.js file
+    const username = LocalStorageService.username;
     return(
         <header>
             <div className="header-style">
@@ -30,11 +33,9 @@ function HeaderUser() {
                         <i className="fa fa-search icon-search fa-lg"></i>
                     </div>
                     <div className="dropdown">
-                        <img src="./images/avatar.jpg" alt="Avatar" className="avatar"/>
+                        <h6 className="header-component left-component" style={{marginTop: '20px'}}>Welcome, {username}</h6>
                         <div className="dropdown-content">
-                            <p>Profile</p>
-                            <p>Setting</p>
-                            <p>Log out</p>
+                            <Link to="/profile">Profile</Link>
                         </div>
                     </div>
                     <div className="header-component left-component">

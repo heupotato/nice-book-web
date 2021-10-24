@@ -10,6 +10,7 @@ class AuthService {
         }).then(res => {
                 if (res.data) {
                     localStorage.setItem("user", JSON.stringify(res.data.body));
+                    localStorage['username'] = res.data.body.user.username;
                     localStorage['email'] = res.data.body.user.email;
                     localStorage['accessToken'] = res.data.body.token;
                 }
@@ -20,11 +21,10 @@ class AuthService {
         )
     }
 
-    async signup (email, userName, password) {
+    async signup (email, username, password) {
         return await axios.post(API_URL + "register", {
             email,
-            //NEED_TODO: userName -> username
-            userName,
+            username,
             password
         }).then(res => {
                 return res.data;

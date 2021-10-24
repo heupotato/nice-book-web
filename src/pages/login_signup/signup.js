@@ -5,7 +5,6 @@ import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Validator from '../../services/validator';
 import AuthService from '../../api-services/auth-service';
-import axios from 'axios';
 import Modal from "react-modal";
 
 const customStyles = {
@@ -98,6 +97,7 @@ function SignUp(){
         // console.log(errors);
 
         if (Object.entries(errors).length === 0){
+            console.log(state)
             const res = await AuthService.signup(state.email, state.username, state.password);
             console.log(res.message);
             if(JSON.stringify(res.message) == "\"REGISTER_SUCCESS\"") {
@@ -115,6 +115,7 @@ function SignUp(){
             }
         }
         else {
+            console.log("2")
             if (errors.username !== ''){
                 toast.error(errors.username,{
                     position: toast.POSITION.BOTTOM_LEFT
