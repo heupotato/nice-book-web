@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
-import {Link, useHistory, useLocation} from "react-router-dom";
+import { useHistory, useLocation } from 'react-router';
+import {Link, } from "react-router-dom";
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthService from '../../api-services/auth-service';

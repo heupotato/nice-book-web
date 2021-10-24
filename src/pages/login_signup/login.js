@@ -100,6 +100,7 @@ function Login() {
                         pathname: '/profile',
                         //headers: authHeader(),
                     });
+                    window.location.reload()
                 }, 1000);
             }
             else if((JSON.stringify(res.message) == "\"INCORECT_PASSWORD\"" || JSON.stringify(res.message) == "\"INCORECT_EMAIL\"")){

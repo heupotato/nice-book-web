@@ -10,12 +10,18 @@ function App() {
 
   const isLoggedIn = () => {
 	//   return true
+	console.log("login")
+	var check = LocalStorageService.token !=="" &&  LocalStorageService.token !==null 
+	console.log("check", check); 
 	  return (LocalStorageService.token !=="" &&  LocalStorageService.token !==null );
   }
 
+
+  console.log("ahihihi"); 
+
   return (
-    <div className="app-container">
-      <Router>
+	<Router>
+    <div className="app-container">  
 	    {isLoggedIn() ? <HeaderUser/> : <Header/>}
         <Switch>
           {
@@ -26,9 +32,8 @@ function App() {
 		  }
         </Switch>
 	    <Footer/>
-      </Router>
-
     </div>
+	</Router>
   );
 }
 
@@ -68,9 +73,11 @@ const showRoutesPrivateManager = (routes, isLoggedIn, role) => {
 	return result;
 }
 
-const  showRoutesPrivateUser = (routes, isLoggedIn, role) => {
+const  showRoutesPrivateUser = (routes, isLoggedIn) => {
+	// console.log(isLoggedIn); 
 	var result = null;
 	if (routes.length > 0) {
+		console.log(isLoggedIn); 
 		result = routes.map((route, index) => {
 			return (<Route
 				key={index}

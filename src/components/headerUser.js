@@ -1,5 +1,6 @@
 import React from "react";
-import {Link, useHistory} from 'react-router-dom';
+import { useHistory } from "react-router";
+import {Link} from 'react-router-dom';
 import AuthService from '../api-services/auth-service';
 import LocalStorageService from "../services/localStorage";
 
@@ -15,8 +16,9 @@ function HeaderUser() {
     const handleSignOut = () => {
         AuthService.logout();
         history.push({
-            pathname: '/',
+            pathname: '/login',
         });
+        window.location.reload()
     }
 
     //NOTE: This line get fullname from localstorage, check localStorage.js file
