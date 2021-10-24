@@ -2,9 +2,16 @@ import React, {useEffect, useState} from 'react';
 import ProfileService from '../../api-services/profile-service';
 import LocalStorageService from "../../services/localStorage";
 import {useHistory} from "react-router-dom";
+import UploadImageService from '../../api-services/upload-image-service';
+import typeOf from "validator/es/lib/util/typeOf";
+import axios from "axios";
+import buffer from 'buffer';
 
 function EditProfile() {
-    const [selectedFile, setSelectedFile] = useState(null);
+    const [eventImg, setEventImg] = useState({
+        image : null,
+    })
+    const [base64Img, setBase64Img] = useState('')
     const [user, setUser] = useState({
         username: '',
         fullname: '',
@@ -22,7 +29,6 @@ function EditProfile() {
     useEffect(() => {
         ProfileService.getProfileUser(userID).then(response => {
             setUser(response.data);
-            console.log(selectedFile);
         })
             .catch(err => console.log(err))
     }, [])
@@ -35,26 +41,66 @@ function EditProfile() {
     }
 
     const handleSubmit = () => {
-        ProfileService.editProfileUser(userID, user.username, user.email, user.fullname, user.DoB, user.gender, user.phone, user.address, user.payment);
+        const res = ProfileService.editProfileUser(userID, user.username, user.email, user.fullname, user.DoB, user.gender, user.phone, user.address, user.payment);
+        console.log(res)
         history.push({
-            pathname: '/profile/',
+            pathname: '/profile',
         });
     }
 
-    // const getBase64 = (file, cb) => {
-    //     let reader = new FileReader();
-    //     reader.readAsDataURL(file);
-    //     reader.onload = function () {
-    //         cb(reader.result)
-    //     };
-    //     reader.onerror = function (error) {
-    //         console.log('Error: ', error);
-    //     };
-    // }
-
-    const handleUploadImage = () => {
-        //console.log(imageUpload[0].name);
+    const callUploadService = () => {
+        let type = "image/png";
+        let fileName = "avatar.png";
+        let folderPrefix = "users";
+        console.log(type)
+        console.log(fileName)
+        console.log(folderPrefix)
+        const upload = [
+            {
+                type: type,
+                fileName: fileName,
+                folderPrefix: folderPrefix
+            }
+        ]
+        console.log(typeOf(upload))
+        const linkAmazon = UploadImageService.uploadImage(upload);
+        console.log(linkAmazon)
+        console.log(base64Img)
+        //const res2 = axios.put(linkAmazon.link, base64Img, {headers: { 'Content-Type': 'image/jpeg' }})
+        //console.log(res2)
+        //user.avatar = res2
     }
+
+    const getBase64 = (file) => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file.image);
+        reader.onload = function () {
+            setBase64Img(reader.result)
+            console.log(base64Img)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+
+    const handleUpload = (evt) => {
+        const tmp = evt.target.files[0];
+        if (tmp){
+            setEventImg({
+                ...setEventImg,
+                image: tmp
+            })
+            console.log(eventImg)
+            if(eventImg.image !== null) {
+                getBase64(eventImg);
+                callUploadService();
+            }
+        }
+        else{
+            console.log("no img")
+        }
+    }
+
 
     return (
         <div>
@@ -64,7 +110,7 @@ function EditProfile() {
                         <div>
                             <img className='profile-avatar' src={user.avatar === '' || typeof user.avatar ==='undefined' ? defaultAvatar : user.avatar}></img>
                         </div>
-                        <input type="file" id="selectedFile" name="selectedFile" className="custom-file-input" value={selectedFile} onChange={(e) => { setSelectedFile(e.target.files[0]); console.log(selectedFile)}}/>
+                        <input type="file"  onChange={handleUpload}  className="custom-file-input"/>
                     </div>
                 </div>
                 <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9 edit-profile" style={{display: 'flex', flexDirection: 'column'}}>
@@ -86,7 +132,7 @@ function EditProfile() {
                             <input className="inf-input form-control" type="text" name="ID" value={userID} readOnly/>
                             <input className="inf-input form-control" type="text" name="username" value={user.username}  onChange={handleChange}></input>
                             <input className="inf-input form-control" type="text" name="fullname" value={user.fullname} onChange={handleChange}/>
-                            <input className="inf-input form-control" type="text" name="DoB" value={user.DoB} onChange={handleChange}/>
+                            <input className="inf-input form-control" type="date" name="DoB" value={user.DoB.slice(0,10)} onChange={handleChange}/>
                             <input className="inf-input form-control" type="text" name="gender" value={user.gender} onChange={handleChange}/>
                             <input className="inf-input form-control" type="text" name="phone" value={user.phone} onChange={handleChange}/>
                             <input className="inf-input form-control" type="text" name="address" value={user.address} onChange={handleChange}/>
