@@ -3,18 +3,15 @@ import ProfileService from '../../api-services/profile-service';
 import LocalStorageService from "../../services/localStorage";
 import {useHistory} from "react-router-dom";
 import UploadImageService from '../../api-services/upload-image-service';
-import typeOf from "validator/es/lib/util/typeOf";
 import axios from "axios";
-import buffer from 'buffer';
 
 function EditProfile() {
-    const [eventImg, setEventImg] = useState({
-        image : null,
-    })
-    const [base64Img, setBase64Img] = useState('')
+    const [imageSelected, setImageSelected] = useState("");
+    //const [avatar, setAvatar] = useState();
     const [user, setUser] = useState({
         username: '',
         fullname: '',
+        avatar: '',
         gender: '',
         DoB: '',
         phone: '',
@@ -41,66 +38,47 @@ function EditProfile() {
     }
 
     const handleSubmit = () => {
-        const res = ProfileService.editProfileUser(userID, user.username, user.email, user.fullname, user.DoB, user.gender, user.phone, user.address, user.payment);
+        const res = ProfileService.editProfileUser(userID, user.username, user.email, user.fullname, user.avatar, user.DoB, user.gender, user.phone, user.address, user.payment);
         console.log(res)
         history.push({
             pathname: '/profile',
         });
     }
 
-    const callUploadService = () => {
-        let type = "image/png";
-        let fileName = "avatar.png";
-        let folderPrefix = "users";
-        console.log(type)
-        console.log(fileName)
-        console.log(folderPrefix)
-        const upload = [
-            {
-                type: type,
-                fileName: fileName,
-                folderPrefix: folderPrefix
-            }
-        ]
-        console.log(typeOf(upload))
-        const linkAmazon = UploadImageService.uploadImage(upload);
-        console.log(linkAmazon)
-        console.log(base64Img)
-        //const res2 = axios.put(linkAmazon.link, base64Img, {headers: { 'Content-Type': 'image/jpeg' }})
-        //console.log(res2)
-        //user.avatar = res2
+    const makeid = (length) => {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() *
+                charactersLength));
+        }
+        return result;
     }
 
-    const getBase64 = (file) => {
-        let reader = new FileReader();
-        reader.readAsDataURL(file.image);
-        reader.onload = function () {
-            setBase64Img(reader.result)
-            console.log(base64Img)
-        };
-        reader.onerror = function (error) {
-            console.log('Error: ', error);
-        };
-    }
+    const handleUpload = async () => {
+        const formData = new FormData();
+        formData.append("file", imageSelected);
+        formData.append("upload_preset", "q6itp6nm");
+        let imageName = makeid(10);
+        formData.append("public_id", imageName)
 
-    const handleUpload = (evt) => {
-        const tmp = evt.target.files[0];
-        if (tmp){
-            setEventImg({
-                ...setEventImg,
-                image: tmp
+        if(imageSelected.name != null) {
+            imageName += "." + imageSelected.name.slice(-3);
+            console.log(imageName)
+            await axios.post("https://api.cloudinary.com/v1_1/dzdq5mium/image/upload", formData
+            ).then((response) => {
+                console.log(response)
+                if (imageName != "") {
+                    const link = "https://res.cloudinary.com/dzdq5mium/image/upload/v1635087942/" + imageName;
+                    console.log(user.avatar)
+                    setUser({...user, avatar: link})
+                    imageName = "";
+                }
             })
-            console.log(eventImg)
-            if(eventImg.image !== null) {
-                getBase64(eventImg);
-                callUploadService();
-            }
         }
-        else{
-            console.log("no img")
-        }
+        console.log(user)
     }
-
 
     return (
         <div>
@@ -110,7 +88,10 @@ function EditProfile() {
                         <div>
                             <img className='profile-avatar' src={user.avatar === '' || typeof user.avatar ==='undefined' ? defaultAvatar : user.avatar}></img>
                         </div>
-                        <input type="file"  onChange={handleUpload}  className="custom-file-input"/>
+                        <div style={{display: 'flex', flexDirection: 'row', marginTop: '20px'}}>
+                            <input type="file"  style={{border: '1px solid grey'}} onChange={(event) => setImageSelected(event.target.files[0])}  className="custom-file-input"/>
+                            <button onClick={handleUpload} style={{backgroundColor: '#ffc700', border: '1px solid grey'}}>Upload</button>
+                        </div>
                     </div>
                 </div>
                 <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9 edit-profile" style={{display: 'flex', flexDirection: 'column'}}>

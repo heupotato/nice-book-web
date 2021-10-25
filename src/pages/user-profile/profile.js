@@ -18,14 +18,14 @@ function UserProfile()
     var userID = LocalStorageService.userID;
 
     const [userState, setUser] = useState({
-        fullname: 'Tien Dat Nguyen',
-        gender: "MALE", //NOTE: Gender: 0 -> male, 1 -> Female
-        DoB: '2000-06-30',
-        phone: '(+84) 912 345 678',
-        address: '11 Dien Bien Phu Street, Thanh Khe, Da Nang',
-        email: 'ITNihongo.team@gmail.com',
-        payment: 'Vietcombank',
-        avatar: 'https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/241740237_1243042599502750_9188172257848413325_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=LbP5CcXmbYgAX96DDcy&_nc_ht=scontent.fsgn2-4.fna&oh=946aa4275ea25d4e38b786f37bca766b&oe=6198CCEE'
+        fullname: '',
+        gender: "", //NOTE: Gender: 0 -> male, 1 -> Female
+        DoB: '',
+        phone: '',
+        address: '',
+        email: '',
+        payment: '',
+        avatar: ''
     })
 
 

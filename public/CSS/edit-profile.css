@@ -37,23 +37,25 @@
 
 .custom-file-input {
     color: transparent;
-    margin-left: 15%;
+    padding-right: 10px;
     height: 30px;
+    border: 5px;
 }
 .custom-file-input::-webkit-file-upload-button {
     visibility: hidden;
 }
 .custom-file-input::before {
-    content: 'Select some files';
-    color: white;
-    background: #ffc700;
-    border-radius: 5px;
+    content: 'Select a file';
+    color: black;
+    border: 5px;
+    background: white;
+    border-radius: 8px;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     cursor: pointer;
     font-weight: 700;
-    padding: 20px;
+    padding: 10px;
 }
 .custom-file-input:hover::before {
     border-color: black;

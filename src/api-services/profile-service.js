@@ -8,11 +8,12 @@ class ProfileService{
         return axios.get(API_URL + userID, {headers: authHeader()})
     }
 
-    editProfileUser(userID, username, email, fullname, DoB, gender, phone, address, payment, password){
+    editProfileUser(userID, username, email, fullname, avatar, DoB, gender, phone, address, payment, password){
         return axios.put(API_URL + userID, {
             username,
             email,
             fullname,
+            avatar,
             DoB,
             gender,
             phone,
