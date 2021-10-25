@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import ProfileService from "../../api-services/profile-service";
 import Divider from "../../components/divider";
 import moment from "moment";
@@ -9,22 +9,23 @@ import LocalStorageService from "../../services/localStorage";
 function UserProfile()
 {
     //NOTE: For API: After login, store userID in localStorage and uncomment the line below
-    //userID = LocalStorageService.userID;
+    //userID = '616cca8018f451057a446ff2';
 
     const defaultAvatar = 'https://docsbydesign.com/wp-content/uploads/2015/08/readingbook.jpg';
 
     //NOTE: FOR API: This is mock userID, you should comment it and user the above code
-    var userID = '616cca8018f451057a446ff2';
+    const history = useHistory();
+    var userID = LocalStorageService.userID;
 
     const [userState, setUser] = useState({
-        fullname: 'Tien Dat Nguyen',
-        gender: "MALE", //NOTE: Gender: 0 -> male, 1 -> Female
-        DoB: '2000-06-30',
-        phone: '(+84) 912 345 678',
-        address: '11 Dien Bien Phu Street, Thanh Khe, Da Nang',
-        email: 'ITNihongo.team@gmail.com',
-        payment: 'Vietcombank',
-        avatar: 'https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/241740237_1243042599502750_9188172257848413325_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=LbP5CcXmbYgAX96DDcy&_nc_ht=scontent.fsgn2-4.fna&oh=946aa4275ea25d4e38b786f37bca766b&oe=6198CCEE'
+        fullname: '',
+        gender: "", //NOTE: Gender: 0 -> male, 1 -> Female
+        DoB: '',
+        phone: '',
+        address: '',
+        email: '',
+        payment: '',
+        avatar: ''
     })
 
 
@@ -38,6 +39,9 @@ function UserProfile()
 
     const handleEdit = () => {
         //TODO: After finishing Edit Profile, Navigate in this block
+        history.push({
+            pathname: '/profile/edit',
+        });
     }
 
     let mockReading = ['https://images-na.ssl-images-amazon.com/images/I/71wdVdp0ncL.jpg',
