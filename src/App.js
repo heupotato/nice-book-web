@@ -10,7 +10,7 @@ function App() {
 
   const isLoggedIn = () => {
 	//   return true
-	  return (LocalStorageService.token !=="" &&  LocalStorageService.token !==null ); 
+	  return (LocalStorageService.token !=="" &&  LocalStorageService.token !==null );
   }
 
   return (

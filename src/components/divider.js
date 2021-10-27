@@ -7,6 +7,6 @@ function Divider(prop)
             </span>
             <div className="d-border" />
         </div>
-    ); 
+    );
 }
-export default Divider; 
+export default Divider;
