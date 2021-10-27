@@ -4,6 +4,8 @@ import LocalStorageService from "../../services/localStorage";
 import {useHistory} from "react-router-dom";
 import UploadImageService from '../../api-services/upload-image-service';
 import axios from "axios";
+import { ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function EditProfile() {
     const [imageSelected, setImageSelected] = useState("");
@@ -57,6 +59,7 @@ function EditProfile() {
     }
 
     const handleUpload = async () => {
+        toast.info("Uploading...",{position: toast.POSITION.BOTTOM_LEFT});
         const formData = new FormData();
         formData.append("file", imageSelected);
         formData.append("upload_preset", "q6itp6nm");
@@ -74,6 +77,7 @@ function EditProfile() {
                     console.log(user.avatar)
                     setUser({...user, avatar: link})
                     imageName = "";
+                    if(response) {toast.success("Upload image successfully...",{position: toast.POSITION.BOTTOM_LEFT});}
                 }
             })
         }
@@ -82,6 +86,7 @@ function EditProfile() {
 
     return (
         <div>
+            <ToastContainer />
             <div className="row profile-row">
                 <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                     <div className='profile-col'>
