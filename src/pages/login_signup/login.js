@@ -22,6 +22,7 @@ function Login() {
     const [modalIsOpen, setIsOpen] = React.useState(false); //Modal
     const [isChecked, setIsChecked] = useState(false);
     const [errors, setErrors] = useState();
+    const history = useHistory();
     const [state, setState] = useState(
         {
             email: '',
@@ -93,6 +94,13 @@ function Login() {
                 toast.success("Login successfully! 🎉",{
                     position: toast.POSITION.BOTTOM_LEFT
                 });
+                setTimeout(() => {
+                    history.push({
+                        pathname: '/profile',
+                        //headers: authHeader(),
+                    });
+                    window.location.reload()
+                }, 1000);
             }
             else if((JSON.stringify(res.message) == "\"INCORECT_PASSWORD\"" || JSON.stringify(res.message) == "\"INCORECT_EMAIL\"")){
                 openModal();
