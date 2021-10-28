@@ -12,6 +12,7 @@ class AuthService {
                     localStorage.setItem("user", JSON.stringify(res.data.body));
                     localStorage['email'] = res.data.body.user.email;
                     localStorage['accessToken'] = res.data.body.token;
+                    localStorage['username'] = res.data.body.user.username;
                 }
                 return res.data;
             }, error => {
@@ -71,6 +72,7 @@ class AuthService {
         localStorage.removeItem("user");
         localStorage.removeItem("email");
         localStorage.removeItem("accessToken");
+        localStorage.removeItem("username");
     }
 
     async verifyCode (email, code) {
