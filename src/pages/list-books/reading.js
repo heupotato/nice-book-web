@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import {Link, useHistory} from "react-router-dom";
+import { useHistory} from "react-router";
+import { useEffect , useState } from "react";
 import ProfileService from "../../api-services/profile-service";
 import Divider from "../../components/divider";
 import moment from "moment";
+import BookThumbnail from "../../components/book-thumbnail";
+import BookListService from "../../api-services/book-list";
 import LocalStorageService from "../../services/localStorage";
+function ReadingList(){
 
-
-function UserProfile()
-{
     //NOTE: For API: After login, store userID in localStorage and uncomment the line below
     // var userID = '616cca8018f451057a446ff2';
 
@@ -28,6 +28,8 @@ function UserProfile()
         avatar: ''
     })
 
+    const [reading, setReading] = useState(); 
+
 
     //TODO: Check API code here
     useEffect(() => {
@@ -36,6 +38,15 @@ function UserProfile()
         })
         .catch(err => console.log(err))
 
+        BookListService.getReadings(userID).then(response => {
+            let bookListData = response.data; 
+            var listBookThumb = bookListData.map((book) => 
+                <BookThumbnail image={book.title} author={book.author} image={book.image}></BookThumbnail>
+            )
+            setReading(listBookThumb); 
+        })
+        .catch(err => console.log(err))
+        
     }, [])
 
     const handleEdit = () => {
@@ -44,37 +55,8 @@ function UserProfile()
         });
     }
 
-    let mockReading = ['https://images-na.ssl-images-amazon.com/images/I/71wdVdp0ncL.jpg',
-    'https://images-na.ssl-images-amazon.com/images/I/81FOFfskpYL.jpg',
-    'https://images-na.ssl-images-amazon.com/images/I/A1hlZpwiF7L.jpg',
-    'https://nhasachphuongnam.com/images/detailed/182/81E1TXOrpML.jpg',
-    'https://images-na.ssl-images-amazon.com/images/I/71rL00TgB0L.jpg'];
-
-    const [readingState, setReading] = useState(mockReading);
-    const [favouriteState, setFavourite] = useState(mockReading);
-    const [laterState, setLater] = useState(mockReading);
-
-    const listReading = readingState.map((bookImg) =>
-        <div className='book-container'>
-            <img src={bookImg} className='book-image'></img>
-        </div>
-    )
-
-    const listFavourite = favouriteState.map((bookImg) =>
-        <div className='book-container'>
-            <img src={bookImg} className='book-image'></img>
-        </div>
-    )
-
-    const listLater = laterState.map((bookImg) =>
-        <div className='book-container'>
-            <img src={bookImg} className='book-image'></img>
-        </div>
-    )
-
     return(
         <div>
-
             <div class="row profile-row">
                 <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                     <div className='profile-col'>
@@ -150,39 +132,17 @@ function UserProfile()
                     <div>
                         <div className='block-center' style={{padding:0}}>
                             <div className='book-row-title'>Reading</div>
-                            <Link to='/profile/readings' style={{fontFamily: '"Montserrat", sans-serif', color:'black'}}>See more {">>>"} </Link>
                         </div>
                         <div className='blank20'></div>
                         <div className='book-row'>
-                            {listReading}
-                        </div>
-
-                        <div className='blank20'></div>
-
-                        <div className='block-center' style={{padding:0}}>
-                            <div className='book-row-title'>Favourite</div>
-                            <Link to='#' style={{fontFamily: '"Montserrat", sans-serif', color:'black'}}>See more {">>>"} </Link>
-                        </div>
-                        <div className='blank20'></div>
-                        <div className='book-row'>
-                            {listFavourite}
-                        </div>
-
-                        <div className='blank20'></div>
-
-                        <div className='block-center' style={{padding:0}}>
-                            <div className='book-row-title'>Read later</div>
-                            <Link to='#' style={{fontFamily: '"Montserrat", sans-serif', color:'black'}}>See more {">>>"} </Link>
-                        </div>
-                        <div className='blank20'></div>
-                        <div className='book-row'>
-                            {listLater}
+                            {reading}
+                           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    );
+    ); 
 }
 
-export default UserProfile;
+export default ReadingList; 
