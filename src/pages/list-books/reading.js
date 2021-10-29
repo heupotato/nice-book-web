@@ -39,7 +39,7 @@ function ReadingList(){
         .catch(err => console.log(err))
 
         BookListService.getReadings(userID).then(response => {
-            let bookListData = response.data; 
+            let bookListData = response.data.reading; 
             var listBookThumb = bookListData.map((book) => 
                 <BookThumbnail image={book.title} author={book.author} image={book.image}></BookThumbnail>
             )
