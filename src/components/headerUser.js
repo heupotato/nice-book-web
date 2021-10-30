@@ -8,7 +8,6 @@ import LocalStorageService from "../services/localStorage";
 function HeaderUser() {
     const history = useHistory();
     const username = LocalStorageService.username;
-    const [search, setSearch] = useState("");
     const [author, setAuthor] = useState({
         author: '',
     })
@@ -33,29 +32,29 @@ function HeaderUser() {
         window.location.reload()
     }
     
-    const handleChangeSearch = (e) => {
-        setSearch({
-            ...search,
-            [e.target.name]: e.target.value
-        })
-        console.log(search)
+    const handleChange = (e) => {
+        if(document.getElementById("typeFilter").value == "author"){
+            setAuthor({...author, author: e.target.value});
+        }
+        else if(document.getElementById("typeFilter").value == "title"){
+            setTitle({...title, title: e.target.value});
+        }
+        else if(document.getElementById("typeFilter").value == "genres"){
+            setGenres({...genres, genres: e.target.value});
+        }
     }
 
     const handleSubmit = () => {
         if(document.getElementById("typeFilter").value == "author"){
-            setAuthor({...author, author: search});
-            console.log(author.author)
             const res = BookService.searchBook(author);
             console.log(res);
         }
         else if(document.getElementById("typeFilter").value == "title"){
-            setTitle({...title, title: search});
             const res = BookService.searchBook(title);
             console.log(res);
         }
         else if(document.getElementById("typeFilter").value == "genres"){
-            setGenres({...genres, genres: search});
-            const res = BookService.searchBook(title);
+            const res = BookService.searchBook(genres);
             console.log(res);
         }
     }
@@ -73,7 +72,7 @@ function HeaderUser() {
                             <option value="title">Title</option>
                             <option value="genres">Genres</option>
                         </select>
-                        <input className="search-input form-control input-field-search" style={{borderRadius: '0rem 0.25rem 0.25rem 0rem'}} placeholder="Search any book..." name="search" type="text" onChange={handleChangeSearch}/>
+                        <input className="search-input form-control input-field-search" id="search" style={{borderRadius: '0rem 0.25rem 0.25rem 0rem'}} placeholder="Search any book..." name="search" type="text" onChange={handleChange}/>
                         <i className="fa fa-search icon-search fa-lg" onClick={handleSubmit}></i>
                     </div>
                     <div className="dropdown">
