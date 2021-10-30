@@ -39,7 +39,7 @@ function FavouriteList(){
         .catch(err => console.log(err))
 
         BookListService.getFavourites(userID).then(response => {
-            let bookListData = response.data.reading; 
+            let bookListData = response.data.favorites; 
             var listBookThumb = bookListData.map((book) => 
                 <BookThumbnail image={book.title} author={book.author} image={book.image}></BookThumbnail>
             )

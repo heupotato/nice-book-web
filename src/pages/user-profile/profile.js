@@ -65,7 +65,7 @@ function UserProfile()
         .catch(err => console.log(err))
 
         BookListService.getFavourites(userID).then(response => {
-            let bookListData = response.data.reading; 
+            let bookListData = response.data.favorites; 
             let smallList = bookListData.slice(0, 5); 
             var listBookThumb = smallList.map((book) => 
                 <div className='book-container'>
@@ -77,7 +77,7 @@ function UserProfile()
         .catch(err => console.log(err))
 
         BookListService.getReadLater(userID).then(response => {
-            let bookListData = response.data.reading; 
+            let bookListData = response.data.readLater; 
             let smallList = bookListData.slice(0, 5); 
             var listBookThumb = smallList.map((book) => 
                 <div className='book-container'>
