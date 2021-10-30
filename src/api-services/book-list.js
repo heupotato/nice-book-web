@@ -11,11 +11,11 @@ class BookListService{
     }
 
     getFavourites(userID){
-        return axios.get(API_URL + userID + "/books/favorites"); 
+        return axios.get(API_URL + userID + "/books/favorites", {headers: authHeader()}); 
     }
 
     getReadLater(userID){
-        return axios.get(API_URL + userID + "/books/readAfter"); 
+        return axios.get(API_URL + userID + "/books/readAfter", {headers: authHeader()}); 
     }
 }
 
