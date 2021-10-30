@@ -15,7 +15,7 @@ class BookListService{
     }
 
     getReadLater(userID){
-        return axios.get(API_URL + userID + "/books/readAfter", {headers: authHeader()}); 
+        return axios.get(API_URL + userID + "/books/read-after", {headers: authHeader()}); 
     }
 }
 
