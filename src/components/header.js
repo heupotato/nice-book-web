@@ -29,8 +29,12 @@ function Header() {
                     <div>
                         <img className="logo-header" src='../images/Logo.png' onClick={handleDirectToHomepage}></img>
                     </div>
-                    <div className="header-component ">
-                        <input className="search-input form-control input-field-search" placeholder="Search any book..." name="search" type="text"/>
+                    <div className="header-component">
+                        <select className="select-filter">
+                            <option>Author</option>
+                            <option>Title</option>
+                        </select>
+                        <input className="search-input form-control input-field-search"  style={{borderRadius: '0rem 0.25rem 0.25rem 0rem'}} placeholder="Search any book..." name="search" type="text"/>
                         <i className="fa fa-search icon-search fa-lg"></i>
                     </div>
                     <div className="header-component left-component">
