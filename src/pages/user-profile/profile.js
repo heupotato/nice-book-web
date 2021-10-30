@@ -78,6 +78,7 @@ function UserProfile()
 
         BookListService.getReadLater(userID).then(response => {
             let bookListData = response.data.readLater; 
+            console.log(bookListData); 
             let smallList = bookListData.slice(0, 5); 
             var listBookThumb = smallList.map((book) => 
                 <div className='book-container'>
