@@ -1,0 +1,14 @@
+.header-book {
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+
+.btn-header {
+    margin-right: 100px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: white;
+    border: none
+}
