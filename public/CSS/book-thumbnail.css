@@ -1,0 +1,11 @@
+.book-card {
+  border: none;
+}
+.book-thumbnail-container {
+  float: left;
+  width: 20vw;
+  /* height: 20vw; */
+  margin: 10px;
+  background-color: white;
+  justify-content: center;
+}

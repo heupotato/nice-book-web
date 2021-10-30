@@ -27,7 +27,7 @@ function Header() {
             <div className="header-style">
                 <div className="header-component">
                     <div>
-                        <img className="logo-header" src='./images/Logo.png' onClick={handleDirectToHomepage}></img>
+                        <img className="logo-header" src='../images/Logo.png' onClick={handleDirectToHomepage}></img>
                     </div>
                     <div className="header-component ">
                         <input className="search-input form-control input-field-search" placeholder="Search any book..." name="search" type="text"/>

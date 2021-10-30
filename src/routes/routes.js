@@ -7,6 +7,9 @@ import Homepage from '../pages/homepage';
 import UserProfile from '../pages/user-profile/profile';
 import EditProfile from '../pages/user-profile/editProfile';
 import DetailBook from '../pages/book/detailBook';
+import ReadingList from '../pages/list-books/reading';
+import FavouriteList from '../pages/list-books/favourites';
+import ReadLaterList from '../pages/list-books/readLater';
 
 export const ROUTES = [
     {
@@ -65,4 +68,19 @@ export const PRIVATE_ROUTES_USER = [
         exact: true,
         main: DetailBook
     },
+    {
+        path: '/profile/readings', 
+        exact: true, 
+        main: ReadingList
+    }, 
+    {
+        path: '/profile/favourites', 
+        exact: true, 
+        main: FavouriteList
+    }, 
+    {
+        path: '/profile/read-later', 
+        exact: true, 
+        main: ReadLaterList
+    }
 ]
