@@ -6,6 +6,7 @@ import NewPassword from "../pages/forgot_password/newPassword";
 import Homepage from '../pages/homepage';
 import UserProfile from '../pages/user-profile/profile';
 import EditProfile from '../pages/user-profile/editProfile';
+import DetailBook from '../pages/book/detailBook';
 
 export const ROUTES = [
     {
@@ -32,12 +33,12 @@ export const ROUTES = [
         path: "/new-password",
         exact: true,
         main: NewPassword
-    },
+    }, 
     {
-        path: "/",
-        exact: true,
+        path: "/", 
+        exact: true, 
         main: Homepage
-    },
+    }, 
 ]
 
 export const PRIVATE_ROUTES_ADMIN = [
@@ -50,13 +51,18 @@ export const PRIVATE_ROUTES_MANAGER = [
 
 export const PRIVATE_ROUTES_USER = [
     {
-        path: '/profile',
-        exact: true,
+        path: '/profile', 
+        exact: true, 
         main: UserProfile
     },
     {
-        path: '/profile/edit',
-        exact: true,
+        path: '/profile/edit', 
+        exact: true, 
         main: EditProfile
-    }
+    },
+    {
+        path: '/books',
+        exact: true,
+        main: DetailBook
+    },
 ]
