@@ -21,12 +21,7 @@ class BookService {
     }
 
     async getAllGenres() {
-        return await axios.get(API_URL + "genres", {headers: authHeader()}
-        ).then(res => {
-            return res.data;
-        }, error => {
-            return error.response.data;
-        })
+        return await axios.get(API_URL + "genres", {headers: authHeader()})  
     }
 }
 
