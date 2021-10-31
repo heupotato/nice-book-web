@@ -38,14 +38,14 @@ function HeaderUser() {
         }
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         var res; 
         if(document.getElementById("typeFilter").value == "author"){
-            res = BookService.searchBook(author);
+            res = await BookService.searchBook(author);
             console.log(res);
         }
         else if(document.getElementById("typeFilter").value == "title"){
-            res = BookService.searchBook(title);
+            res = await BookService.searchBook(title);
             console.log(res);
         }
         history.push({
