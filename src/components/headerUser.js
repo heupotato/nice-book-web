@@ -39,14 +39,20 @@ function HeaderUser() {
     }
 
     const handleSubmit = () => {
+        var res; 
         if(document.getElementById("typeFilter").value == "author"){
-            const res = BookService.searchBook(author);
+            res = BookService.searchBook(author);
             console.log(res);
         }
         else if(document.getElementById("typeFilter").value == "title"){
-            const res = BookService.searchBook(title);
+            res = BookService.searchBook(title);
             console.log(res);
         }
+        history.push({
+            pathname: '/search',
+            state: res
+        }  
+        )
     }
     
     return(

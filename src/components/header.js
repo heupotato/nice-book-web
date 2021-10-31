@@ -22,6 +22,10 @@ function Header() {
         });
     }
 
+    const handleClickSearch = () => {
+        
+    }
+
     return(
         <header>
             <div className="header-style">
@@ -35,7 +39,7 @@ function Header() {
                             <option>Title</option>
                         </select>
                         <input className="search-input form-control input-field-search"  style={{borderRadius: '0rem 0.25rem 0.25rem 0rem'}} placeholder="Search any book..." name="search" type="text"/>
-                        <i className="fa fa-search icon-search fa-lg"></i>
+                        <i className="fa fa-search icon-search fa-lg" onClick={handleClickSearch}></i>
                     </div>
                     <div className="header-component left-component">
                         <button type="button" className="btn-login-header" onClick={handleDirectToLogin}>Login</button>

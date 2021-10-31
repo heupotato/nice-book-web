@@ -10,6 +10,7 @@ import DetailBook from '../pages/book/detailBook';
 import ReadingList from '../pages/list-books/reading';
 import FavouriteList from '../pages/list-books/favourites';
 import ReadLaterList from '../pages/list-books/readLater';
+import SearchResult from '../pages/search/search-res';
 
 export const ROUTES = [
     {
@@ -87,5 +88,10 @@ export const PRIVATE_ROUTES_USER = [
         path: '/category/:name', 
         exact: true, 
         main: ReadLaterList
+    }, 
+    {
+        path: '/search', 
+        exact: true, 
+        main: SearchResult
     }
 ]
