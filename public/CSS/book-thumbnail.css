@@ -9,3 +9,8 @@
   background-color: white;
   justify-content: center;
 }
+
+.img-not-found {
+  display: block;
+  margin: auto;
+}
