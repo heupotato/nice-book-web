@@ -7,10 +7,12 @@ function SearchResult(){
     console.log("Search Page"); 
     console.log(location.state); 
 
-    const [searchRes, setSearchRes] = useState([]); 
+    const [searchRes, setSearchRes] = useState(); 
     let res = location.state
-    useEffect(() => {
-        let listRes = res.map((book) => {
+    useEffect(async ()  =>  {
+        console.log("UseEffect"); 
+        console.log(res);
+        let listRes = await res.map((book) => {
             <BookThumbnail id={book._id} image={book.title} author={book.author} image={book.image}></BookThumbnail>
         })
         setSearchRes(listRes)
