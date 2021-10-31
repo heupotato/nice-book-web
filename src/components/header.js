@@ -23,7 +23,7 @@ function Header() {
     }
 
     const handleClickSearch = () => {
-        
+        //TODO: Create Modal - "You have to login to use this function"
     }
 
     return(
