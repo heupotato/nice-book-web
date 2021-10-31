@@ -82,5 +82,10 @@ export const PRIVATE_ROUTES_USER = [
         path: '/profile/read-later', 
         exact: true, 
         main: ReadLaterList
+    }, 
+    {
+        path: '/category/:name', 
+        exact: true, 
+        main: ReadLaterList
     }
 ]

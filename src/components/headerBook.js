@@ -1,4 +1,23 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import BookService from "../api-services/book-service";
 function HeaderBook() {
+
+    const [categoriesList, setCategories] = useState(); 
+
+    useEffect(() => {
+        BookService.getAllGenres().then(response => {
+            let genres = response.data; 
+            let categorieDropDown = genres.map((genre)=> {
+                <div className="dropdown-content">
+                    <Link to={"/category/" + genre}>{genre}</Link>
+                </div>
+            })
+            setCategories(categorieDropDown); 
+        })
+        .catch(err => console.log(err))
+    }, [])
+    
     return(
         <header className="header-book">
             <button className="btn-header">Discover</button> &nbsp;
