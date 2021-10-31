@@ -16,7 +16,7 @@ function SearchResult(){
             <BookThumbnail id={book._id} image={book.title} author={book.author} image={book.image}></BookThumbnail>
         })
         setSearchRes(listRes)
-    }, []); 
+    }, [res]); 
     // let listRes = res.map((book) => {
     //     <BookThumbnail id={book._id} image={book.title} author={book.author} image={book.image}></BookThumbnail>
     // })
