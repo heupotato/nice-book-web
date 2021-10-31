@@ -14,9 +14,6 @@ function HeaderUser() {
     const [title, setTitle] = useState({
         title: '',
     })
-    const [genres, setGenres] = useState({
-        genres: '',
-    })
 
     const handleDirectToHomepage = () => {
         history.push({
@@ -39,9 +36,6 @@ function HeaderUser() {
         else if(document.getElementById("typeFilter").value == "title"){
             setTitle({...title, title: e.target.value});
         }
-        else if(document.getElementById("typeFilter").value == "genres"){
-            setGenres({...genres, genres: e.target.value});
-        }
     }
 
     const handleSubmit = () => {
@@ -51,10 +45,6 @@ function HeaderUser() {
         }
         else if(document.getElementById("typeFilter").value == "title"){
             const res = BookService.searchBook(title);
-            console.log(res);
-        }
-        else if(document.getElementById("typeFilter").value == "genres"){
-            const res = BookService.searchBook(genres);
             console.log(res);
         }
     }
@@ -70,7 +60,6 @@ function HeaderUser() {
                         <select id="typeFilter" className="select-filter">
                             <option value="author">Author</option>
                             <option value="title">Title</option>
-                            <option value="genres">Genres</option>
                         </select>
                         <input className="search-input form-control input-field-search" id="search" style={{borderRadius: '0rem 0.25rem 0.25rem 0rem'}} placeholder="Search any book..." name="search" type="text" onChange={handleChange}/>
                         <i className="fa fa-search icon-search fa-lg" onClick={handleSubmit}></i>
