@@ -1,8 +1,21 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
+import Modal from 'react-modal';
+
+const customStyles = {
+    content: {
+        width: '700px',
+        top: '30%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        transform: 'translate(-50%, -50%)',
+    },
+};
 
 function Header() {
     const history = useHistory();
+    const [modalIsOpen, setIsOpen] = React.useState(false);
 
     const handleDirectToHomepage = () => {
         history.push({
@@ -23,11 +36,30 @@ function Header() {
     }
 
     const handleClickSearch = () => {
-        //TODO: Create Modal - "You have to login to use this function"
+        openModal();
+    }
+
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
     }
 
     return(
         <header>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+            >
+                <h1>Warning</h1>
+                <div className="line"></div>
+                <div style={{marginBottom: '30px', marginTop: '30px', fontFamily: 'Montserrat', fontSize: '22px'}}>You have to login to use this service.</div>
+                <div className="line"></div>
+                <button className="btn btn-primary btn-lg button-center" onClick={closeModal}>OK</button>
+            </Modal>
             <div className="header-style">
                 <div className="header-component">
                     <div>
