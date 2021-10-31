@@ -11,10 +11,19 @@ class BookService {
 
     async searchBook (val) {
         const filter = JSON.stringify(val)
-        console.log(JSON.stringify(filter))
+        //console.log(JSON.stringify(filter))
         return await axios.get("http://localhost:8080/api/v1/books" + "?filter=" + JSON.stringify(filter) ,{headers: authHeader()}
         ).then(res => {
             return res.data.docs;
+        }, error => {
+            return error.response.data;
+        })
+    }
+
+    async getAllGenres() {
+        return await axios.get(API_URL + "genres", {headers: authHeader()}
+        ).then(res => {
+            return res.data;
         }, error => {
             return error.response.data;
         })
