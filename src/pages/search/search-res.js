@@ -10,8 +10,8 @@ function SearchResult(){
     const [searchRes, setSearchRes] = useState([]); 
 
     useEffect(() => {
-        // var res = location.state; 
-        var res = []
+        var res = location.state; 
+        // var res = []
         let listRes = res.map((book) => {
             <BookThumbnail image={book.title} author={book.author} image={book.image}></BookThumbnail>
         })
