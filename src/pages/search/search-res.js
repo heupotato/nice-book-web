@@ -28,9 +28,12 @@ function SearchResult(){
         </div>
     ); 
     else return(
-        <div className="book-row">
-            {convertSearchRes(searchRes)}
+        <div className="search-page">
+            <div className="book-row">
+                {convertSearchRes(searchRes)}
+            </div>
         </div>
+        
     ); 
 }
 
