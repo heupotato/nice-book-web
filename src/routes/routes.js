@@ -65,7 +65,7 @@ export const PRIVATE_ROUTES_USER = [
         main: EditProfile
     },
     {
-        path: '/books',
+        path: '/books/:id',
         exact: true,
         main: DetailBook
     },

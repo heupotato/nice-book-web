@@ -7,7 +7,7 @@ function BookThumbnail(prop){
                 <div className="card-body">
                     <h4 className="card-title">{prop.bookName}</h4>
                     <p className="card-text">Author: {prop.author}</p>
-                    <Link to="#" className="btn btn-primary">View Book</Link>
+                    <Link to={"/books/" + prop.id} className="btn btn-primary">View Book</Link>
                 </div>
             </div>
         </div>
