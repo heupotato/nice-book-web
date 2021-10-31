@@ -8,11 +8,11 @@ function HeaderBook() {
     useEffect(() => {
         BookService.getAllGenres().then(res => {
             let genres = res.data;
-            let categoriesDropDown = genres.map((genre) => {
+            let categoriesDropDown = genres.map((genre) => 
                 <div className="dropdown-content">
                     <Link to={"/categories" + genre}>{genre}</Link>
                 </div>
-            })
+            )
             setCategories(categoriesDropDown);
         }).catch(err => console.log(err))
     })
