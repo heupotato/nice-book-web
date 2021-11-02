@@ -3,22 +3,22 @@ import Link from 'react-dom';
 import BookService from "../api-services/book-service";
 
 function HeaderBook() {
-    const [categoriesList, setCategories] = useState([]);
+    //const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
-        BookService.getAllGenres().then(res => {
-            let genres = res.data;
-            let categoriesDropDown = genres.map((genre) => {
-                console.log(genre)
-                return <div className="dropdown-content">
-                    <Link to={"/categories/" + genre}>{genre}</Link>
-                </div>
-            }
-                
-            );
-            setCategories(categoriesDropDown);
-        }).catch(err => console.log(err))
-    }, [])
+    // useEffect(() => {
+    //     BookService.getAllGenres().then(res => {
+    //         let genres = res.data;
+    //         let categoriesDropDown = genres.map((genre) => {
+    //             console.log(genre)
+    //             return <div className="dropdown-content">
+    //                 <Link to={"/categories/" + genre}>{genre}</Link>
+    //             </div>
+    //         }
+
+    //         );
+    //         setCategories(categoriesDropDown);
+    //     }).catch(err => console.log(err))
+    // }, [])
 
     return(
         <header className="header-book">
@@ -29,7 +29,14 @@ function HeaderBook() {
             <div className="dropdown" style={{display: 'flex', flexDirection: 'row'}}>
                 <div style={{marginTop: '20px', background: 'white', border: 'none', fontWeight: '600', marginBottom: '20px'}}>Categories</div>
                 <div className="dropdown-content">
-                    {categoriesList}
+                    <p>Romance</p>
+                    <p>Literary fiction</p>
+                    <p>Mystery</p>
+                    <p>Historical</p>
+                    <p>Bildungsroman</p>
+                    <p>Realist literature</p>
+                    <p>Fantasy</p>
+                    <p>Science fiction</p>
                 </div>
                 <i class="fas fa-angle-down" style={{marginTop: '25px', marginLeft: '10px'}}></i>
             </div>

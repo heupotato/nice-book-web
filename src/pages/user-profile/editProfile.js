@@ -59,16 +59,15 @@ function EditProfile() {
     }
 
     const handleUpload = async () => {
-        toast.info("Uploading...",{position: toast.POSITION.BOTTOM_LEFT});
         const formData = new FormData();
         formData.append("file", imageSelected);
         formData.append("upload_preset", "q6itp6nm");
         let imageName = makeid(10);
         formData.append("public_id", imageName)
 
-        if(imageSelected.name != null) {
+        if(imageSelected.name != null && (imageSelected.name.slice(-3) == "jpg" || imageSelected.name.slice(-3) == "png")) {
+            toast.info("Uploading...",{position: toast.POSITION.BOTTOM_LEFT});
             imageName += "." + imageSelected.name.slice(-3);
-            console.log(imageName)
             await axios.post("https://api.cloudinary.com/v1_1/dzdq5mium/image/upload", formData
             ).then((response) => {
                 console.log(response)
@@ -80,6 +79,9 @@ function EditProfile() {
                     if(response) {toast.success("Upload image successfully...",{position: toast.POSITION.BOTTOM_LEFT});}
                 }
             })
+        }
+        else {
+            toast.error("Please choose correct type (jpg, png).",{position: toast.POSITION.BOTTOM_LEFT});
         }
         console.log(user)
     }
@@ -94,7 +96,7 @@ function EditProfile() {
                             <img className='profile-avatar' src={user.avatar === '' || typeof user.avatar ==='undefined' ? defaultAvatar : user.avatar}></img>
                         </div>
                         <div style={{display: 'flex', flexDirection: 'row', marginTop: '20px'}}>
-                            <input type="file"  style={{border: '1px solid grey'}} onChange={(event) => setImageSelected(event.target.files[0])}  className="custom-file-input"/>
+                            <input type="file" accept="image/png, image/jpg"  style={{border: '1px solid grey'}} onChange={(event) => setImageSelected(event.target.files[0])}  className="custom-file-input"/>
                             <button onClick={handleUpload} style={{backgroundColor: '#ffc700', border: '1px solid grey'}}>Upload</button>
                         </div>
                     </div>
