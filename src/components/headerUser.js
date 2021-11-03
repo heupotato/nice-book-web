@@ -31,10 +31,10 @@ function HeaderUser() {
     
     const handleChange = (e) => {
         if(document.getElementById("typeFilter").value == "author"){
-            setAuthor({...author, author: e.target.value});
+            setAuthor({...author, author: document.getElementById("search").value});
         }
         else if(document.getElementById("typeFilter").value == "title"){
-            setTitle({...title, title: e.target.value});
+            setTitle({...title, title: document.getElementById("search").value});
         }
     }
 
@@ -63,7 +63,7 @@ function HeaderUser() {
                         <img className="logo-header" src='../images/Logo.png' onClick={handleDirectToHomepage}></img>
                     </div>
                     <div className="header-component ">
-                        <select id="typeFilter" className="select-filter">
+                        <select id="typeFilter" className="select-filter" onChange={handleChange}>
                             <option value="author">Author</option>
                             <option value="title">Title</option>
                         </select>
