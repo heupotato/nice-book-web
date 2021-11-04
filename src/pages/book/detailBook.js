@@ -3,10 +3,13 @@ import { useHistory } from "react-router-dom";
 import BookService from "../../api-services/book-service";
 import HeaderBook from "../../components/headerBook";
 
-function DetailBook() {
+function DetailBook({match}) {
     const defaultBookImage = 'https://docsbydesign.com/wp-content/uploads/2015/08/readingbook.jpg';
     //const history = useHistory(); 
-    const bookID = "617af4bf859d22425a223eda";
+    // const bookID = "617af4bf859d22425a223eda";
+    //TODO: Uncomment this code to get ID from link 
+    const bookID = match.params.id; 
+    console.log(bookID)
     const [book, setBook] = useState({
         genres: [],
         ratings: [],
