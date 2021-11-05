@@ -14,10 +14,10 @@ function Category({match}){
     })
 
     useEffect(async () => {
-        //TODO: use name to call get books by genre service 
-        const res = await BookService.searchBook(genres);
-        //after that, call setBookList to set the response.data
-        setBookList(res);
+        // //TODO: use name to call get books by genre service 
+        // const res = await BookService.searchBook(genres);
+        // //after that, call setBookList to set the response.data
+        // setBookList(res);
     }, [name])
 
     const convertBookList = (books) => {
@@ -27,11 +27,23 @@ function Category({match}){
         return bookCo
     }
 
-
+    if (bookList.length === 0 )
+    return(
+        <div>
+            <HeaderBook/>
+            <div className='blank20'></div>
+            <div className='book-row-title' style={{textAlign: 'center'}}>Category: {name}</div>
+            <div style={{height:'100vh'}}>
+                <img className="img-not-found" src='../images/book-not-found.png'></img>
+            </div>
+        </div>
+    ); 
+    else 
     return(
         <div className="search-page">
             <HeaderBook/>
-            <h4 style={{marginLeft: '10px'}}>Genre: {name}</h4>
+            <div className='blank20'></div>
+            <div className='book-row-title' style={{textAlign: 'center'}}>Category: {name}</div>
             <div className="book-row">
                 {convertBookList(bookList)}
             </div>
