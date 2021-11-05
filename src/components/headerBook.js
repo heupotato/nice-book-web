@@ -21,6 +21,10 @@ function HeaderBook() {
         return dropdownList
     }
 
+    const handleClick = () => {
+        window.location.reload()
+    }
+
     return(
         <header className="header-book">
             <button className="btn-header">Discover</button> &nbsp;
@@ -29,7 +33,7 @@ function HeaderBook() {
             <button className="btn-header">Recommended</button> &nbsp;
             <div className="dropdown" style={{display: 'flex', flexDirection: 'row'}}>
                 <div style={{marginTop: '20px', background: 'white', border: 'none', fontWeight: '600', marginBottom: '20px'}}>Categories</div>
-                <div className="dropdown-content">
+                <div className="dropdown-header-book" onClick={handleClick}>
                     {convertCategoryDropDown(categories)}
                 </div>
                 <i class="fas fa-angle-down" style={{marginTop: '25px', marginLeft: '10px'}}></i>

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useLocation } from "react-router";
 import { useEffect } from "react/cjs/react.development";
 import BookThumbnail from "../../components/book-thumbnail";
+import HeaderBook from "../../components/headerBook";
+
 function SearchResult(){
     const location = useLocation(); 
     // console.log("Search Page"); 
@@ -23,8 +25,11 @@ function SearchResult(){
 
     if (res.length === 0 )
     return(
-        <div style={{height:'100vh'}}>
-            <img className="img-not-found" src='../images/book-not-found.png'></img>
+        <div>
+            <HeaderBook/>
+            <div style={{height:'100vh'}}>
+                <img className="img-not-found" src='../images/book-not-found.png'></img>
+            </div>
         </div>
     ); 
     else return(
@@ -33,7 +38,6 @@ function SearchResult(){
                 {convertSearchRes(searchRes)}
             </div>
         </div>
-        
     ); 
 }
 

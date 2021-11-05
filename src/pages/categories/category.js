@@ -2,16 +2,22 @@ import { useState } from "react";
 import { useLocation } from "react-router";
 import { useEffect } from "react/cjs/react.development";
 import BookService from "../../api-services/book-service";
+import BookThumbnail from "../../components/book-thumbnail";
+import HeaderBook from "../../components/headerBook";
 
 function Category({match}){
     const name = match.params.name; 
     console.log(name); 
     const [bookList, setBookList] = useState([])
+    const [genres, setGenre] = useState({
+        genres: name,
+    })
 
-    useEffect(() => {
+    useEffect(async () => {
         //TODO: use name to call get books by genre service 
-        
+        const res = await BookService.searchBook(genres);
         //after that, call setBookList to set the response.data
+        setBookList(res);
     }, [name])
 
     const convertBookList = (books) => {
@@ -24,6 +30,8 @@ function Category({match}){
 
     return(
         <div className="search-page">
+            <HeaderBook/>
+            <h4 style={{marginLeft: '10px'}}>Genre: {name}</h4>
             <div className="book-row">
                 {convertBookList(bookList)}
             </div>
