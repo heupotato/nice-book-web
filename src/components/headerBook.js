@@ -16,7 +16,7 @@ function HeaderBook() {
     const convertCategoryDropDown = (categories) => {
         let dropdownList = categories.map((category) => {
             // return <p>{category}</p>
-            return <p><Link style={{ textDecoration: 'none', color: 'white' }} to={"/category/" + category} >{category}</Link></p>
+            return <p><Link style={{ textDecoration: 'none'}} to={"/category/" + category} >{category}</Link></p>
         }); 
         return dropdownList
     }
