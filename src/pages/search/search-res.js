@@ -34,6 +34,7 @@ function SearchResult(){
     ); 
     else return(
         <div className="search-page">
+            <HeaderBook/>
             <div className="book-row">
                 {convertSearchRes(searchRes)}
             </div>
