@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from 'react-dom';
 import BookService from "../api-services/book-service";
-import Category from "../pages/categories/category";
 
 function HeaderBook() {
     const [categories, setCategories] = useState([]);
