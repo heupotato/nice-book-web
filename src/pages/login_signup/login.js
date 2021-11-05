@@ -1,5 +1,5 @@
 import React, {Component, useEffect, useState} from "react";
-import {Link, useHistory, useLocation, userHistory} from "react-router-dom";
+import {Link, useHistory, useLocation} from "react-router-dom";
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Validator from '../../services/validator';
@@ -29,8 +29,6 @@ function Login() {
             password: '',
         }
     );
-
-    //const history = useHistory();
 
     useEffect(() => {
         setErrors({
@@ -96,7 +94,7 @@ function Login() {
                 });
                 setTimeout(() => {
                     history.push({
-                        pathname: '/profile',
+                        pathname: '/',
                         //headers: authHeader(),
                     });
                     window.location.reload()
