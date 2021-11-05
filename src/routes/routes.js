@@ -43,6 +43,22 @@ export const ROUTES = [
         exact: true, 
         main: Homepage
     }, 
+    {
+        path: '/category/:name', 
+        exact: true, 
+        main: ReadLaterList
+    }, 
+    {
+        path: '/search', 
+        exact: true, 
+        main: SearchResult
+    },
+    {
+        path: '/books/:id',
+        exact: true,
+        main: DetailBook
+    }
+
 ]
 
 export const PRIVATE_ROUTES_ADMIN = [
@@ -65,11 +81,6 @@ export const PRIVATE_ROUTES_USER = [
         main: EditProfile
     },
     {
-        path: '/books/:id',
-        exact: true,
-        main: DetailBook
-    },
-    {
         path: '/profile/readings', 
         exact: true, 
         main: ReadingList
@@ -84,14 +95,5 @@ export const PRIVATE_ROUTES_USER = [
         exact: true, 
         main: ReadLaterList
     }, 
-    {
-        path: '/category/:name', 
-        exact: true, 
-        main: ReadLaterList
-    }, 
-    {
-        path: '/search', 
-        exact: true, 
-        main: SearchResult
-    }
+    
 ]

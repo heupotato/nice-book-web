@@ -78,7 +78,7 @@ const  showRoutesPrivateUser = (routes, isLoggedIn, role) => {
 				exact
 				render={props => (isLoggedIn) ? <route.main {...props} /> :
 					<Redirect to={{
-						pathname: '',
+						pathname: '/login',
 						state: { from: props.location }
 					}} />}
 			/>)
