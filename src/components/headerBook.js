@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Link from 'react-dom';
 import BookService from "../api-services/book-service";
+import Category from "../pages/categories/category";
 
 function HeaderBook() {
-    //const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     // useEffect(() => {
     //     BookService.getAllGenres().then(res => {
@@ -20,6 +21,21 @@ function HeaderBook() {
     //     }).catch(err => console.log(err))
     // }, [])
 
+    useEffect(() => {
+        BookService.getAllGenres().then(response => {
+            let genres = response.data; 
+            setCategories(genres); 
+        })
+        .catch(err => console.log(err))
+    }, [])
+
+    const convertCategoryDropDown = (categories) => {
+        let dropdownList = categories.map((category) => {
+            return <p>{category}</p>
+        }); 
+        return dropdownList
+    }
+
     return(
         <header className="header-book">
             <button className="btn-header">Discover</button> &nbsp;
@@ -29,14 +45,15 @@ function HeaderBook() {
             <div className="dropdown" style={{display: 'flex', flexDirection: 'row'}}>
                 <div style={{marginTop: '20px', background: 'white', border: 'none', fontWeight: '600', marginBottom: '20px'}}>Categories</div>
                 <div className="dropdown-content">
-                    <p>Romance</p>
+                    {/* <p>Romance</p>
                     <p>Literary fiction</p>
                     <p>Mystery</p>
                     <p>Historical</p>
                     <p>Bildungsroman</p>
                     <p>Realist literature</p>
                     <p>Fantasy</p>
-                    <p>Science fiction</p>
+                    <p>Science fiction</p> */}
+                    {convertCategoryDropDown(categories)}
                 </div>
                 <i class="fas fa-angle-down" style={{marginTop: '25px', marginLeft: '10px'}}></i>
             </div>
