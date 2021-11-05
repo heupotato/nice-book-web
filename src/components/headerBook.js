@@ -15,7 +15,8 @@ function HeaderBook() {
 
     const convertCategoryDropDown = (categories) => {
         let dropdownList = categories.map((category) => {
-            return <p><Link style={{ textDecoration: 'none'}} to={"/category/" + category} >{category}</Link></p>
+            return <p>{category}</p>
+            // return <p><Link style={{ textDecoration: 'none', color: 'white' }} to={"/category/" + category} >{category}</Link></p>
         }); 
         return dropdownList
     }
@@ -28,7 +29,7 @@ function HeaderBook() {
             <button className="btn-header">Recommended</button> &nbsp;
             <div className="dropdown" style={{display: 'flex', flexDirection: 'row'}}>
                 <div style={{marginTop: '20px', background: 'white', border: 'none', fontWeight: '600', marginBottom: '20px'}}>Categories</div>
-                <div className="dropdown-header-book">
+                <div className="dropdown-content">
                     {convertCategoryDropDown(categories)}
                 </div>
                 <i class="fas fa-angle-down" style={{marginTop: '25px', marginLeft: '10px'}}></i>
