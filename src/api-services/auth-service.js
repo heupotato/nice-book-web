@@ -21,11 +21,10 @@ class AuthService {
         )
     }
 
-    async signup (email, userName, password) {
+    async signup (email, username, password) {
         return await axios.post(API_URL + "register", {
             email,
-            //NEED_TODO: userName -> username
-            userName,
+            username,
             password
         }).then(res => {
                 return res.data;
