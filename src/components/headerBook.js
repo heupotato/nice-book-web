@@ -28,7 +28,7 @@ function HeaderBook() {
             <button className="btn-header">Recommended</button> &nbsp;
             <div className="dropdown" style={{display: 'flex', flexDirection: 'row'}}>
                 <div style={{marginTop: '20px', background: 'white', border: 'none', fontWeight: '600', marginBottom: '20px'}}>Categories</div>
-                <div className="dropdown-content">
+                <div className="dropdown-header-book">
                     {convertCategoryDropDown(categories)}
                 </div>
                 <i class="fas fa-angle-down" style={{marginTop: '25px', marginLeft: '10px'}}></i>
