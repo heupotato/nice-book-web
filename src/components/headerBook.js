@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Link from 'react-dom';
+import {Link} from 'react-router-dom';
 import BookService from "../api-services/book-service";
 
 function HeaderBook() {
@@ -15,8 +15,8 @@ function HeaderBook() {
 
     const convertCategoryDropDown = (categories) => {
         let dropdownList = categories.map((category) => {
-            return <p>{category}</p>
-            // return <p><Link style={{ textDecoration: 'none', color: 'white' }} to={"/category/" + category} >{category}</Link></p>
+            // return <p>{category}</p>
+            return <p><Link style={{ textDecoration: 'none', color: 'white' }} to={"/category/" + category} >{category}</Link></p>
         }); 
         return dropdownList
     }
