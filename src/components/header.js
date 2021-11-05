@@ -1,21 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
+import BookService from "../api-services/book-service";
 import {useHistory} from "react-router-dom";
-import Modal from 'react-modal';
-
-const customStyles = {
-    content: {
-        width: '700px',
-        top: '30%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        transform: 'translate(-50%, -50%)',
-    },
-};
 
 function Header() {
     const history = useHistory();
-    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [author, setAuthor] = useState({
+        author: '',
+    })
+    const [title, setTitle] = useState({
+        title: '',
+    })
 
     const handleDirectToHomepage = () => {
         history.push({
@@ -35,43 +29,46 @@ function Header() {
         });
     }
 
-    const handleClickSearch = () => {
-        openModal();
+    const handleChange = (e) => {
+        if(document.getElementById("typeFilter").value == "author"){
+            setAuthor({...author, author: document.getElementById("search").value});
+        }
+        else if(document.getElementById("typeFilter").value == "title"){
+            setTitle({...title, title: document.getElementById("search").value});
+        }
     }
 
-    function openModal() {
-        setIsOpen(true);
-    }
-
-    function closeModal() {
-        setIsOpen(false);
+    const handleSubmit = async () => {
+        var res; 
+        if(document.getElementById("typeFilter").value == "author"){
+            res = await BookService.searchBook(author);
+            console.log(res);
+        }
+        else if(document.getElementById("typeFilter").value == "title"){
+            res = await BookService.searchBook(title);
+            console.log(res);
+        }
+        history.push({
+            pathname: '/search',
+            state: res
+        }  
+        )
     }
 
     return(
         <header>
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                style={customStyles}
-            >
-                <h1>Warning</h1>
-                <div className="line"></div>
-                <div style={{marginBottom: '30px', marginTop: '30px', fontFamily: 'Montserrat', fontSize: '22px'}}>You have to login to use this service.</div>
-                <div className="line"></div>
-                <button className="btn btn-primary btn-lg button-center" onClick={closeModal}>OK</button>
-            </Modal>
             <div className="header-style">
                 <div className="header-component">
                     <div>
                         <img className="logo-header" src='../images/Logo.png' onClick={handleDirectToHomepage}></img>
                     </div>
                     <div className="header-component">
-                        <select className="select-filter">
-                            <option>Author</option>
-                            <option>Title</option>
+                    <select id="typeFilter" className="select-filter" onChange={handleChange}>
+                            <option value="author">Author</option>
+                            <option value="title">Title</option>
                         </select>
-                        <input className="search-input form-control input-field-search"  style={{borderRadius: '0rem 0.25rem 0.25rem 0rem'}} placeholder="Search any book..." name="search" type="text"/>
-                        <i className="fa fa-search icon-search fa-lg" onClick={handleClickSearch}></i>
+                        <input className="search-input form-control input-field-search" id="search" style={{borderRadius: '0rem 0.25rem 0.25rem 0rem'}} placeholder="Search any book..." name="search" type="text" onChange={handleChange}/>
+                        <i className="fa fa-search icon-search fa-lg" onClick={handleSubmit}></i>
                     </div>
                     <div className="header-component left-component">
                         <button type="button" className="btn-login-header" onClick={handleDirectToLogin}>Login</button>
