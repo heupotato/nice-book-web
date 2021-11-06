@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/v1/auth/";
+//const API_URL = "http://localhost:8080/api/v1/auth/";
+const API_URL = "https://ef0b-42-117-155-67.ngrok.io/api/v1/auth/";
 
 class AuthService {
     async login (email, password) {

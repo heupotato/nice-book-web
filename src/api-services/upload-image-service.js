@@ -1,7 +1,8 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "http://localhost:8080/api/v1/medias/";
+//const API_URL = "http://localhost:8080/api/v1/medias/";
+const API_URL = "https://ef0b-42-117-155-67.ngrok.io/api/v1/medias/";
 
 class UploadImageService {
     async uploadImage (item) {
