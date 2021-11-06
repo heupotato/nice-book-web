@@ -40,11 +40,17 @@ function EditProfile() {
     }
 
     const handleSubmit = () => {
-        const res = ProfileService.editProfileUser(userID, user.username, user.email, user.fullname, user.avatar, user.DoB, user.gender, user.phone, user.address, user.payment);
-        console.log(res)
-        history.push({
-            pathname: '/profile',
-        });
+        console.log(user.gender)
+        if(user.gender != 'FEMALE' && user.gender != 'MALE' && user.gender !== undefined && user.gender != '') {
+            toast.error("Gender must be FEMALE or MALE.",{position: toast.POSITION.BOTTOM_LEFT});
+        }
+        else {
+            const res = ProfileService.editProfileUser(userID, user.username, user.email, user.fullname, user.avatar, user.DoB, user.gender, user.phone, user.address, user.payment);
+            console.log(res)
+            history.push({
+                pathname: '/profile',
+            });
+        }
     }
 
     const makeid = (length) => {
@@ -117,14 +123,14 @@ function EditProfile() {
                             <p className="inf-label-text">Payment:</p>
                         </div>
                         <div style={{width: '90%'}}>
-                            <input className="inf-input form-control" type="text" name="ID" value={userID} readOnly/>
-                            <input className="inf-input form-control" type="text" name="username" value={user.username}  onChange={handleChange}></input>
+                        <input className="inf-input form-control" type="text" name="ID" value={userID} readOnly/>
+                            <input className="inf-input form-control" type="text" name="username" value={user.username}  onChange={handleChange} readOnly></input>
                             <input className="inf-input form-control" type="text" name="fullname" value={user.fullname} onChange={handleChange}/>
-                            <input className="inf-input form-control" type="date" name="DoB" value={user.DoB.slice(0,10)} onChange={handleChange}/>
-                            <input className="inf-input form-control" type="text" name="gender" value={user.gender} onChange={handleChange}/>
+                            <input className="inf-input form-control" type="date" name="DoB" value={user.DoB == null ? user.DoB : user.DoB.slice(0,10)} onChange={handleChange}/>
+                            <input className="inf-input form-control" type="text" placeholder="Only FEMALE or MALE" name="gender" value={user.gender} onChange={handleChange}/>
                             <input className="inf-input form-control" type="text" name="phone" value={user.phone} onChange={handleChange}/>
                             <input className="inf-input form-control" type="text" name="address" value={user.address} onChange={handleChange}/>
-                            <input className="inf-input form-control" type="text" name="email" value={user.email} onChange={handleChange}/>
+                            <input className="inf-input form-control" type="text" name="email" value={user.email} onChange={handleChange} readOnly/>
                             <input className="inf-input form-control" type="text" name="payment" value={user.payment} onChange={handleChange}/>
                         </div>
                     </div>
