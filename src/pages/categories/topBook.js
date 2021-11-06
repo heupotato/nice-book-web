@@ -1,29 +1,29 @@
 import { useState } from "react";
-import { useLocation } from "react-router";
 import { useEffect } from "react/cjs/react.development";
+import BookService from "../../api-services/book-service";
 import BookThumbnail from "../../components/book-thumbnail";
 import HeaderBook from "../../components/headerBook";
 
-function SearchResult(){
-    const location = useLocation(); 
-    // console.log("Search Page"); 
-    // console.log(location.state); 
+function TopBook(){
+    const [topBook, setTopBook] = useState([]); 
 
-    const [searchRes, setSearchRes] = useState([]); 
-    let res = location.state
     useEffect(async ()  =>  {
-        setSearchRes(res);
-    }, [res]); 
-    const convertSearchRes = (searchRes) => {
-        let listRes = searchRes.map((book) => {
+        BookService.getTopBook().then(res => {
+            setTopBook(res.data.docs);
+        })
+        .catch (err => console.log(err))
+    }, []); 
+
+    const convertTopBook = (topBk) => {
+        let listTopBook = topBk.map((book) => {
             return <BookThumbnail id={book._id} bookName={book.title} author={book.author} image={book.image}></BookThumbnail>
         })
-        return listRes;
+        return listTopBook;
     }
-    console.log(searchRes)
+    console.log(topBook)
     
 
-    if (res.length === 0 )
+    if (topBook.length === 0 )
     return(
         <div>
             <HeaderBook/>
@@ -35,11 +35,13 @@ function SearchResult(){
     else return(
         <div className="search-page">
             <HeaderBook/>
+            <div className='blank20'></div>
+            <div className='book-row-title' style={{textAlign: 'center', marginBottom: '20px'}}>Top trending</div>
             <div className="book-row">
-                {convertSearchRes(searchRes)}
+                {convertTopBook(topBook)}
             </div>
         </div>
     ); 
 }
 
-export default SearchResult; 
+export default TopBook; 

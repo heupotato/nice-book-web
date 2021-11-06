@@ -8,7 +8,8 @@ function HeaderBook() {
     useEffect(() => {
         BookService.getAllGenres().then(response => {
             let genres = response.data; 
-            setCategories(genres); 
+            setCategories(genres);
+            console.log(categories) 
         })
         .catch(err => console.log(err))
     }, [])
@@ -28,8 +29,8 @@ function HeaderBook() {
     return(
         <header className="header-book">
             <button className="btn-header">Discover</button> &nbsp;
-            <button className="btn-header">Top Books</button> &nbsp;
-            <button className="btn-header">New Release</button> &nbsp;
+            <button className="btn-header"><Link to='/trending'  style={{ textDecoration: 'none', color:'black'}}>Top Books</Link></button> &nbsp;
+            <button className="btn-header"><Link to='/new-release'  style={{ textDecoration: 'none', color:'black'}}>New Release</Link></button> &nbsp;
             <button className="btn-header">Recommended</button> &nbsp;
             <div className="dropdown" style={{display: 'flex', flexDirection: 'row'}}>
                 <div style={{marginTop: '20px', background: 'white', border: 'none', fontWeight: '600', marginBottom: '20px'}}>Categories</div>
