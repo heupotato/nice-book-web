@@ -24,7 +24,6 @@ function EditProfile() {
     const history = useHistory();
     const userID = LocalStorageService.userID;
     const defaultAvatar = 'https://docsbydesign.com/wp-content/uploads/2015/08/readingbook.jpg';
-    const genderDefault = ' ';
 
     useEffect(() => {
         ProfileService.getProfileUser(userID).then(response => {
