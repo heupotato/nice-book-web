@@ -4,7 +4,7 @@
 .book-thumbnail-container {
   float: left;
   width: 20vw;
-  /* height: 20vw; */
+  height: 40vh;
   margin: 10px;
   background-color: white;
   justify-content: center;
