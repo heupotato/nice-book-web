@@ -1,8 +1,9 @@
 import axios from "axios";
 import authHeader from "./auth-header";
+import URLService from "./URL";
 
 //const API_URL = "http://localhost:8080/api/v1/users/";
-const API_URL = "https://ef0b-42-117-155-67.ngrok.io/api/v1/users/";
+const API_URL = URLService.NGROK_URL + "users/";
 
 class BookListService{
     getReadings(userID){
