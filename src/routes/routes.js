@@ -11,6 +11,7 @@ import ReadingList from '../pages/list-books/reading';
 import FavouriteList from '../pages/list-books/favourites';
 import ReadLaterList from '../pages/list-books/readLater';
 import SearchResult from '../pages/search/search-res';
+import Category from '../pages/categories/category';
 
 export const ROUTES = [
     {
@@ -46,7 +47,7 @@ export const ROUTES = [
     {
         path: '/category/:name', 
         exact: true, 
-        main: ReadLaterList
+        main: Category
     }, 
     {
         path: '/search', 
