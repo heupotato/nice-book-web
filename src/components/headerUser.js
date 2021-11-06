@@ -73,7 +73,7 @@ function HeaderUser() {
                     <div className="dropdown">
                         <h6 className="header-component left-component" style={{marginTop: '20px'}}>Welcome, {username}</h6>
                         <div className="dropdown-content">
-                            <Link to="/profile">Profile</Link>
+                            <Link to="/profile" style={{ textDecoration: 'none', color: 'black'}}>Profile</Link>
                         </div>
                     </div>
                     <div className="header-component left-component">

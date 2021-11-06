@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
-import Link from 'react-dom';
+import {Link} from 'react-router-dom';
 import BookService from "../api-services/book-service";
 
 function HeaderBook() {
-    //const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
 
-    // useEffect(() => {
-    //     BookService.getAllGenres().then(res => {
-    //         let genres = res.data;
-    //         let categoriesDropDown = genres.map((genre) => {
-    //             console.log(genre)
-    //             return <div className="dropdown-content">
-    //                 <Link to={"/categories/" + genre}>{genre}</Link>
-    //             </div>
-    //         }
+    useEffect(() => {
+        BookService.getAllGenres().then(response => {
+            let genres = response.data; 
+            setCategories(genres); 
+        })
+        .catch(err => console.log(err))
+    }, [])
 
-    //         );
-    //         setCategories(categoriesDropDown);
-    //     }).catch(err => console.log(err))
-    // }, [])
+    const convertCategoryDropDown = (categories) => {
+        let dropdownList = categories.map((category) => {
+            // return <p>{category}</p>
+            return <p><Link style={{ textDecoration: 'none', color: 'black'}} to={"/category/" + category} >{category}</Link></p>
+        }); 
+        return dropdownList
+    }
+
+    const handleClick = () => {
+        window.location.reload()
+    }
 
     return(
         <header className="header-book">
@@ -28,15 +33,8 @@ function HeaderBook() {
             <button className="btn-header">Recommended</button> &nbsp;
             <div className="dropdown" style={{display: 'flex', flexDirection: 'row'}}>
                 <div style={{marginTop: '20px', background: 'white', border: 'none', fontWeight: '600', marginBottom: '20px'}}>Categories</div>
-                <div className="dropdown-content">
-                    <p>Romance</p>
-                    <p>Literary fiction</p>
-                    <p>Mystery</p>
-                    <p>Historical</p>
-                    <p>Bildungsroman</p>
-                    <p>Realist literature</p>
-                    <p>Fantasy</p>
-                    <p>Science fiction</p>
+                <div className="dropdown-header-book" onClick={handleClick}>
+                    {convertCategoryDropDown(categories)}
                 </div>
                 <i class="fas fa-angle-down" style={{marginTop: '25px', marginLeft: '10px'}}></i>
             </div>
