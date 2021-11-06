@@ -12,6 +12,8 @@ import FavouriteList from '../pages/list-books/favourites';
 import ReadLaterList from '../pages/list-books/readLater';
 import SearchResult from '../pages/search/search-res';
 import Category from '../pages/categories/category';
+import TopBook from '../pages/categories/topBook';
+import NewReleaseBook from '../pages/categories/newReleaseBook';
 
 export const ROUTES = [
     {
@@ -58,7 +60,17 @@ export const ROUTES = [
         path: '/books/:id',
         exact: true,
         main: DetailBook
-    }
+    },
+    {
+        path: '/trending', 
+        exact: true, 
+        main: TopBook
+    },
+    {
+        path: '/new-release', 
+        exact: true, 
+        main: NewReleaseBook
+    },  
 
 ]
 
