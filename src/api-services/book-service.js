@@ -20,17 +20,17 @@ class BookService {
     }
 
     async getAllGenres() {
-        return await axios.get(API_URL + "genres", {headers: authHeader()})  
+        return await axios.get(API_URL + "/genres")  
     }
 
     async getNewReleaseBook(val) {
         const newRelBook = JSON.stringify(val)
         //return await axios.get(API_URL + "?orderBy=-publication" + "&filter=" + JSON.stringify(newRelBook))
-        return await axios.get(API_URL + "?limit=7" + "&orderBy=-publicationDate")
+        return await axios.get(API_URL + "?limit=10" + "&orderBy=-publicationDate")
     }
 
     async getTopBook() {
-        return await axios.get(API_URL + "?limit=7" + "&orderBy=-trending")
+        return await axios.get(API_URL + "?limit=10" + "&orderBy=-trending")
     }
 }
 

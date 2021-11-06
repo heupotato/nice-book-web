@@ -8,7 +8,8 @@ function HeaderBook() {
     useEffect(() => {
         BookService.getAllGenres().then(response => {
             let genres = response.data; 
-            setCategories(genres); 
+            setCategories(genres);
+            console.log(categories) 
         })
         .catch(err => console.log(err))
     }, [])
