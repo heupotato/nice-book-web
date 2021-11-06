@@ -41,7 +41,7 @@ function ReadLaterList(){
         BookListService.getReadLater(userID).then(response => {
             let bookListData = response.data.readLater; 
             var listBookThumb = bookListData.map((book) => 
-                <BookThumbnail id={book._id} image={book.title} author={book.author} image={book.image}></BookThumbnail>
+                <BookThumbnail id={book._id} bookName={book.title} author={book.author} image={book.image}></BookThumbnail>
             )
             setReadLater(listBookThumb); 
         })

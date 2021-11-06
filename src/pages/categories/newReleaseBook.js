@@ -16,7 +16,7 @@ function NewReleaseBook(){
     
     const convertNewRelease = (newRelList) => {
         let listNewRel = newRelList.map((book) => {
-            return <BookThumbnail id={book._id} image={book.title} author={book.author} image={book.image}></BookThumbnail>
+            return <BookThumbnail id={book._id} bookName={book.title} author={book.author} image={book.image}></BookThumbnail>
         })
         return listNewRel;
     }
