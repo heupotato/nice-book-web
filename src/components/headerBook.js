@@ -28,7 +28,7 @@ function HeaderBook() {
 
     return(
         <header className="header-book">
-            <button className="btn-header">Discover</button> &nbsp;
+            <button className="btn-header"><Link to='/discover'  style={{ textDecoration: 'none', color:'black'}}>Discover</Link></button> &nbsp;
             <button className="btn-header"><Link to='/trending'  style={{ textDecoration: 'none', color:'black'}}>Top Books</Link></button> &nbsp;
             <button className="btn-header"><Link to='/new-release'  style={{ textDecoration: 'none', color:'black'}}>New Release</Link></button> &nbsp;
             <button className="btn-header">Recommended</button> &nbsp;
