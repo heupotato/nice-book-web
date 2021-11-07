@@ -17,11 +17,10 @@ function Category({match}){
 
     useEffect(async () => {
         // //TODO: use name to call get books by genre service 
-        const res = await BookService.searchBook(genres).then(()=>{
-            setIsloaded(true)
-        });
+        const res = await BookService.searchBook(genres);
         // //after that, call setBookList to set the response.data
         setBookList(res);
+        setIsloaded(true); 
     }, [name])
 
     const convertBookList = (books) => {
