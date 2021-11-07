@@ -3,13 +3,16 @@ import { useEffect } from "react/cjs/react.development";
 import BookService from "../../api-services/book-service";
 import BookThumbnail from "../../components/book-thumbnail";
 import HeaderBook from "../../components/headerBook";
+import loading from "../../gifs/loading.gif"
 
 function NewReleaseBook(){
     const [newRel, setNewRel] = useState([]); 
+    const [isLoaded, setIsloaded] = useState(false); 
 
     useEffect(async ()  =>  {
         BookService.getNewReleaseBook().then(res => {
             setNewRel(res.data.docs);
+            setIsloaded(true); 
         })
         .catch (err => console.log(err))
     }, []); 
@@ -22,8 +25,17 @@ function NewReleaseBook(){
     }
     console.log(newRel)
     
+    if (isLoaded === false)
+    return(
+        <div>
+            <HeaderBook/>
+            <div style={{height:'100vh'}}>
+                <img className="img-loading" src={loading} style={{height:"100vh"}}></img>
+            </div>
+        </div>
+    )
 
-    if (newRel.length === 0 )
+    if (newRel.length === 0 && isLoaded)
     return(
         <div>
             <HeaderBook/>
