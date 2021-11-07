@@ -4,6 +4,7 @@ import { useEffect } from "react/cjs/react.development";
 import BookService from "../../api-services/book-service";
 import BookThumbnail from "../../components/book-thumbnail";
 import HeaderBook from "../../components/headerBook";
+import loading from "../../gifs/loading.gif"
 
 function Category({match}){
     const name = match.params.name; 
@@ -12,12 +13,14 @@ function Category({match}){
     const [genres, setGenre] = useState({
         genres: name,
     })
+    const [isLoaded, setIsloaded] = useState(false); 
 
     useEffect(async () => {
         // //TODO: use name to call get books by genre service 
         const res = await BookService.searchBook(genres);
         // //after that, call setBookList to set the response.data
         setBookList(res);
+        setIsloaded(true); 
     }, [name])
 
     const convertBookList = (books) => {
@@ -27,7 +30,17 @@ function Category({match}){
         return bookCo
     }
 
-    if (bookList.length === 0 )
+    if (isLoaded === false)
+    return(
+        <div>
+            <HeaderBook/>
+            <div style={{height:'100vh'}}>
+                <img className="img-loading" src={loading} style={{height:"100vh"}}></img>
+            </div>
+        </div>
+    )
+
+    if (bookList.length === 0 && isLoaded)
     return(
         <div>
             <HeaderBook/>
