@@ -42,17 +42,24 @@ function Header() {
         var res; 
         if(document.getElementById("typeFilter").value == "author"){
             res = await BookService.searchBook(author);
+            if(author.author != ''){
+                history.push({
+                    pathname: '/search',
+                    state: res
+                })
+            }
             console.log(res);
         }
         else if(document.getElementById("typeFilter").value == "title"){
             res = await BookService.searchBook(title);
+            if(title.title != ''){
+                history.push({
+                    pathname: '/search',
+                    state: res
+                })
+            }
             console.log(res);
         }
-        history.push({
-            pathname: '/search',
-            state: res
-        }  
-        )
     }
 
     return(
