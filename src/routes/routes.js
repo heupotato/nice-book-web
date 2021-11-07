@@ -14,6 +14,7 @@ import SearchResult from '../pages/search/search-res';
 import Category from '../pages/categories/category';
 import TopBook from '../pages/categories/topBook';
 import NewReleaseBook from '../pages/categories/newReleaseBook';
+import Discover from '../pages/categories/discover';
 
 export const ROUTES = [
     {
@@ -71,6 +72,11 @@ export const ROUTES = [
         exact: true, 
         main: NewReleaseBook
     },  
+    {
+        path: '/discover', 
+        exact: true, 
+        main: Discover
+    }
 
 ]
 
