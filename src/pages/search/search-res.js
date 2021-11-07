@@ -3,6 +3,7 @@ import { useLocation } from "react-router";
 import { useEffect } from "react/cjs/react.development";
 import BookThumbnail from "../../components/book-thumbnail";
 import HeaderBook from "../../components/headerBook";
+import loading from "../../gifs/loading.gif"
 
 function SearchResult(){
     const location = useLocation(); 
@@ -10,9 +11,11 @@ function SearchResult(){
     // console.log(location.state); 
 
     const [searchRes, setSearchRes] = useState([]); 
+    const [isLoaded, setIsloaded] = useState(false); 
     let res = location.state
     useEffect(async ()  =>  {
         setSearchRes(res);
+        setIsloaded(true); 
     }, [res]); 
     const convertSearchRes = (searchRes) => {
         let listRes = searchRes.map((book) => {
@@ -22,8 +25,17 @@ function SearchResult(){
     }
     console.log(searchRes)
     
+    if (isLoaded === false)
+    return(
+        <div>
+            <HeaderBook/>
+            <div style={{height:'100vh'}}>
+                <img className="img-loading" src={loading} style={{height:"100vh"}}></img>
+            </div>
+        </div>
+    )
 
-    if (res.length === 0 )
+    if (res.length === 0 &&isLoaded)
     return(
         <div>
             <HeaderBook/>

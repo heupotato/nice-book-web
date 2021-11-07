@@ -3,13 +3,16 @@ import { useEffect } from "react/cjs/react.development";
 import BookService from "../../api-services/book-service";
 import BookThumbnail from "../../components/book-thumbnail";
 import HeaderBook from "../../components/headerBook";
+import loading from "../../gifs/loading.gif"
 
 function TopBook(){
     const [topBook, setTopBook] = useState([]); 
+    const [isLoaded, setIsloaded] = useState(false); 
 
     useEffect(async ()  =>  {
         BookService.getTopBook().then(res => {
             setTopBook(res.data.docs);
+            setIsloaded(true); 
         })
         .catch (err => console.log(err))
     }, []); 
@@ -22,8 +25,17 @@ function TopBook(){
     }
     console.log(topBook)
     
+    if (isLoaded === false)
+    return(
+        <div>
+            <HeaderBook/>
+            <div style={{height:'100vh'}}>
+                <img className="img-loading" src={loading} style={{height:"100vh"}}></img>
+            </div>
+        </div>
+    )
 
-    if (topBook.length === 0 )
+    if (topBook.length === 0 && isLoaded)
     return(
         <div>
             <HeaderBook/>

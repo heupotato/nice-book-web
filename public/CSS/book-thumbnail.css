@@ -24,3 +24,8 @@
   width: auto;
   height: 400px;
 }
+
+.img-loading {
+  display: block;
+  margin: 0 auto;
+}
