@@ -15,6 +15,7 @@ import Category from '../pages/categories/category';
 import TopBook from '../pages/categories/topBook';
 import NewReleaseBook from '../pages/categories/newReleaseBook';
 import Discover from '../pages/categories/discover';
+import Recommend from '../pages/categories/recommend';
 
 export const ROUTES = [
     {
@@ -76,8 +77,12 @@ export const ROUTES = [
         path: '/discover', 
         exact: true, 
         main: Discover
-    }
-
+    },
+    {
+        path: '/recommend', 
+        exact: true, 
+        main: Recommend
+    },
 ]
 
 export const PRIVATE_ROUTES_ADMIN = [

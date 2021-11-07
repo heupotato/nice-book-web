@@ -16,7 +16,6 @@ function HeaderBook() {
 
     const convertCategoryDropDown = (categories) => {
         let dropdownList = categories.map((category) => {
-            // return <p>{category}</p>
             return <p><Link style={{ textDecoration: 'none', color: 'black'}} to={"/category/" + category} >{category}</Link></p>
         }); 
         return dropdownList
@@ -31,7 +30,7 @@ function HeaderBook() {
             <button className="btn-header"><Link to='/discover'  style={{ textDecoration: 'none', color:'black'}}>Discover</Link></button> &nbsp;
             <button className="btn-header"><Link to='/trending'  style={{ textDecoration: 'none', color:'black'}}>Top Books</Link></button> &nbsp;
             <button className="btn-header"><Link to='/new-release'  style={{ textDecoration: 'none', color:'black'}}>New Release</Link></button> &nbsp;
-            <button className="btn-header">Recommended</button> &nbsp;
+            <button className="btn-header"><Link to='/recommend'  style={{ textDecoration: 'none', color:'black'}}>Recommended</Link></button> &nbsp;
             <div className="dropdown" style={{display: 'flex', flexDirection: 'row'}}>
                 <div style={{marginTop: '20px', background: 'white', border: 'none', fontWeight: '600', marginBottom: '20px'}}>Categories</div>
                 <div className="dropdown-header-book" onClick={handleClick}>
