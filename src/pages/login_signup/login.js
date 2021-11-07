@@ -94,7 +94,7 @@ function Login() {
                 });
                 setTimeout(() => {
                     history.push({
-                        pathname: '/',
+                        pathname: '/discover',
                         //headers: authHeader(),
                     });
                     window.location.reload()
