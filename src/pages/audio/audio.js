@@ -4,12 +4,12 @@ function AudioBook(){
     const [sounds, setSound] = useState(
         [
             {
-               soundType: "HCM-Female", 
-               soundSource: "https://docs.google.com/uc?export=download&id=1YbVvzpTGSGSFRuzy7INh1qH8vU8BU8zr"
+               type: "HCM-Female", 
+               src: "https://docs.google.com/uc?export=download&id=1YbVvzpTGSGSFRuzy7INh1qH8vU8BU8zr"
             },
             {
-                soundType: "HCM-Male", 
-                soundSource: "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3"
+                type: "HCM-Male", 
+                src: "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3"
             }
         ]
     )
@@ -21,7 +21,7 @@ function AudioBook(){
 
     const converSoundList =  (sounds) => {
         let soundCo = sounds.map(sound => {
-            return <li><a href="#" data-value={sound.soundSource}>{sound.soundType}</a></li>
+            return <li><a href="#" data-value={sound.src}>{sound.type}</a></li>
         })
         return soundCo
     }
@@ -50,7 +50,7 @@ function AudioBook(){
             </ul>
 
            <audio id="audio" controls>
-                <source  id="audioSource" src={sounds[0].soundSource}/>
+                <source  id="audioSource" src={sounds[0].src}/>
             </audio>
       </div>
     ); 
