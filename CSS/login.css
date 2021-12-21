@@ -1,0 +1,23 @@
+.remember-checkbox {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    justify-content: center;
+}
+
+.checkbox {
+    margin: 3px;
+}
+
+.checkbox-text {
+    margin-left: 5px;
+    color: #FCBD10;
+    cursor: pointer;
+}
+
+.line{
+    width: 650px;
+    border-bottom: 1px solid lightgrey;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,114 @@
+.vertical-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.dialog-bg {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 65px;
+  padding-right: 15px;
+}
+
+.block-center {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signup-background img {
+  height: 603px;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+}
+
+.subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.signup-form {
+  padding: 15px 70px;
+}
+
+.input {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  border: 0;
+  outline: none;
+  color: black;
+  background: transparent;
+  border-bottom: 1px solid black;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+  border-bottom: 1px solid black !important;
+}
+
+.input-icons i {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.icon {
+  padding: 5px;
+  min-width: 40px;
+  color: grey;
+}
+
+.input-field {
+  padding: 10px;
+  padding-left: 70px;
+}
+
+.button-center {
+  margin: 0 auto;
+  display: block;
+  border-radius: 20px;
+  background-color: #ffc700;
+  border-color: #ffc700;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+  min-width: 200px;
+}
+
+.forgot-pass {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+  text-align: center;
+  color: grey;
+  margin-top: 15px;
+}

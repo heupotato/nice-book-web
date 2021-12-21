@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/heupotato/nice-book-web/static/css/main.26c1f585.chunk.css",
+    "main.js": "/heupotato/nice-book-web/static/js/main.244914b7.chunk.js",
+    "main.js.map": "/heupotato/nice-book-web/static/js/main.244914b7.chunk.js.map",
+    "runtime-main.js": "/heupotato/nice-book-web/static/js/runtime-main.775df446.js",
+    "runtime-main.js.map": "/heupotato/nice-book-web/static/js/runtime-main.775df446.js.map",
+    "static/css/2.f4c56af9.chunk.css": "/heupotato/nice-book-web/static/css/2.f4c56af9.chunk.css",
+    "static/js/2.a5582484.chunk.js": "/heupotato/nice-book-web/static/js/2.a5582484.chunk.js",
+    "static/js/2.a5582484.chunk.js.map": "/heupotato/nice-book-web/static/js/2.a5582484.chunk.js.map",
+    "static/js/3.eb781f48.chunk.js": "/heupotato/nice-book-web/static/js/3.eb781f48.chunk.js",
+    "static/js/3.eb781f48.chunk.js.map": "/heupotato/nice-book-web/static/js/3.eb781f48.chunk.js.map",
+    "index.html": "/heupotato/nice-book-web/index.html",
+    "static/css/2.f4c56af9.chunk.css.map": "/heupotato/nice-book-web/static/css/2.f4c56af9.chunk.css.map",
+    "static/css/main.26c1f585.chunk.css.map": "/heupotato/nice-book-web/static/css/main.26c1f585.chunk.css.map",
+    "static/js/2.a5582484.chunk.js.LICENSE.txt": "/heupotato/nice-book-web/static/js/2.a5582484.chunk.js.LICENSE.txt",
+    "static/media/loading.6f480ba5.gif": "/heupotato/nice-book-web/static/media/loading.6f480ba5.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.775df446.js",
+    "static/css/2.f4c56af9.chunk.css",
+    "static/js/2.a5582484.chunk.js",
+    "static/css/main.26c1f585.chunk.css",
+    "static/js/main.244914b7.chunk.js"
+  ]
+}
