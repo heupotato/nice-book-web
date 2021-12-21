@@ -1,22 +1,28 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import mediasServices from "../../api-services/medias-services";
+import LocalStorageService from "../../services/localStorage";
 function AudioBook(){
     const [sounds, setSound] = useState(
         [
             {
-               type: "HCM-Female", 
-               src: "https://docs.google.com/uc?export=download&id=1YbVvzpTGSGSFRuzy7INh1qH8vU8BU8zr"
+               type: '', 
+               src: ''
             },
             {
-                type: "HCM-Male", 
-                src: "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3"
+                type: '', 
+                src: ''
             }
         ]
     )
-    
-    //set Sound từ API trong này nhé 
-    useEffect(() => {
+    const bookID = LocalStorageService.bookID;
+    const tmp = null
 
+    useEffect(() => {
+        mediasServices.getDetailMedia(bookID).then(res => {
+            // console.log(res.data)
+            setSound(res.data.audios)
+        }).catch(error => console.log(error))
     }, [])
 
     const converSoundList =  (sounds) => {
@@ -42,14 +48,14 @@ function AudioBook(){
     return(
         <div>
             <ul style={{listStyle:'none'}}>
-            <li>Sound files
+            <li style={{fontWeight: 'bold', fontSize:'20px'}}>Book audio
                 <ul id="list" onClick={changeSound}>
                     {converSoundList(sounds)}
                 </ul>
             </li>
             </ul>
 
-           <audio id="audio" controls>
+           <audio id="audio" controls style={{width: '100%'}}>
                 <source  id="audioSource" src={sounds[0].src}/>
             </audio>
       </div>

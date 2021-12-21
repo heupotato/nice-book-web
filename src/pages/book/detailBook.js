@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import BookService from "../../api-services/book-service";
 import HeaderBook from "../../components/headerBook";
+import { Link } from "react-router-dom";
 
 function DetailBook({match}) {
     const defaultBookImage = 'https://docsbydesign.com/wp-content/uploads/2015/08/readingbook.jpg';
@@ -40,8 +41,8 @@ function DetailBook({match}) {
                         <div>
                             <img className='book-image' src={book.image === '' || typeof book.image ==='undefined' ? defaultBookImage : book.image}></img>
                         </div>
-                        <button class="btn btn-primary btn-lg" style={{margin: '5px', marginTop: '10px', backgroundColor: '#ffc700', borderColor: '#ffc700'}}>Read</button>
-                        <button class="btn btn-primary btn-lg" style={{margin: '5px', backgroundColor: 'white' , color: '#ffc700', borderColor: '#ffc700'}}>Listen to audio</button>
+                        <button class="btn btn-primary btn-lg" style={{margin: '5px', marginTop: '10px', backgroundColor: '#ffc700', borderColor: '#ffc700'}}><Link to={"/" + bookID} style={{color: 'white', textDecoration: 'none'}}>Read</Link></button>
+                        <button class="btn btn-primary btn-lg" style={{margin: '5px', backgroundColor: 'white' , color: '#ffc700', borderColor: '#ffc700'}}><Link to={"/" + bookID} style={{color: '#ffc700', textDecoration: 'none'}}>Listen to audio</Link></button>
                         <div>
                             <i class="far fa-bookmark fa-1x" style={{marginLeft: '2px'}}></i>
                             <button class="btn btn-primary btn-lg" style={{margin: '5px', backgroundColor: 'white', color: 'black', border: 'none'}}>Save for later</button>
