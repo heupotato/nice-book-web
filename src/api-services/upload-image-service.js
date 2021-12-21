@@ -16,4 +16,4 @@ class UploadImageService {
     }
 }
 
-export default new UploadImageService;
+export default new UploadImageService();

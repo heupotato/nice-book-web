@@ -34,4 +34,4 @@ class BookService {
     }
 }
 
-export default new BookService;
+export default new BookService();

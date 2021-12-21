@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
-import { useEffect } from 'react/cjs/react.development';
 import BookThumbnail from '../../components/book-thumbnail';
 import HeaderBook from '../../components/headerBook';
 import loading from '../../gifs/loading.gif';
@@ -52,7 +51,7 @@ function SearchResult() {
         <div style={{ height: '100vh' }}>
           <img
             className='img-not-found'
-            src='../images/book-not-found.png'
+            src='/nice-book-web/images/book-not-found.png'
           ></img>
         </div>
       </div>
@@ -61,7 +60,7 @@ function SearchResult() {
     return (
       <div className='search-page'>
         <HeaderBook />
-        <div className='book-row'>{convertSearchRes(searchRes)}</div>
+        <div className='book-row'>{convertSearchRes(res)}</div>
       </div>
     );
 }

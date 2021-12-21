@@ -10,4 +10,4 @@ class MediaService {
     }
 }
 
-export default new MediaService;
+export default new MediaService();
