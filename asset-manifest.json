@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/nice-book-web/static/css/main.fb9e537e.chunk.css",
-    "main.js": "/nice-book-web/static/js/main.14134b9c.chunk.js",
-    "main.js.map": "/nice-book-web/static/js/main.14134b9c.chunk.js.map",
+    "main.js": "/nice-book-web/static/js/main.899e32de.chunk.js",
+    "main.js.map": "/nice-book-web/static/js/main.899e32de.chunk.js.map",
     "runtime-main.js": "/nice-book-web/static/js/runtime-main.eb75b4d2.js",
     "runtime-main.js.map": "/nice-book-web/static/js/runtime-main.eb75b4d2.js.map",
     "static/css/2.f4c56af9.chunk.css": "/nice-book-web/static/css/2.f4c56af9.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.f4c56af9.chunk.css",
     "static/js/2.882c641a.chunk.js",
     "static/css/main.fb9e537e.chunk.css",
-    "static/js/main.14134b9c.chunk.js"
+    "static/js/main.899e32de.chunk.js"
   ]
 }
