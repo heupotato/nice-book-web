@@ -15,6 +15,10 @@ class LocalStorageService{
     static get username(){
         return localStorage.getItem('username');
     }
+
+    static get bookID(){
+        return localStorage.getItem('bookID');
+    }
 }
 
 export default LocalStorageService

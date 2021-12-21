@@ -16,6 +16,7 @@ import TopBook from '../pages/categories/topBook';
 import NewReleaseBook from '../pages/categories/newReleaseBook';
 import Discover from '../pages/categories/discover';
 import Recommend from '../pages/categories/recommend';
+import ReadBook from '../pages/book/ReadBook';
 
 export const ROUTES = [
     {
@@ -119,5 +120,9 @@ export const PRIVATE_ROUTES_USER = [
         exact: true, 
         main: ReadLaterList
     }, 
-    
+    {
+        path: '/:id', 
+        exact: true, 
+        main: ReadBook
+    }
 ]
