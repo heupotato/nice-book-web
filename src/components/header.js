@@ -67,7 +67,7 @@ function Header() {
             <div className="header-style">
                 <div className="header-component">
                     <div>
-                        <img className="logo-header" src='../images/Logo.png' onClick={handleDirectToHomepage}></img>
+                        <img className="logo-header" src='%PUBLIC_URL%/images/Logo.png' onClick={handleDirectToHomepage}></img>
                     </div>
                     <div className="header-component">
                     <select id="typeFilter" className="select-filter" onChange={handleChange}>
