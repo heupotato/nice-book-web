@@ -1,0 +1,38 @@
+.book-image {
+  width: 100%;
+  border-radius: 8px;
+  align-self: center;
+}
+
+.book-col {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  padding: 50px;
+  justify-content: space-between;
+}
+
+.author {
+    display: flex;
+    flex-direction: row;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 150;
+    font-size: 15px;
+}
+
+.author-name {
+    margin-left: 5px;
+    color: #224362;
+    font-weight: 150;
+}
+
+.content-book {
+    margin-top: 20px;
+    color: grey;
+}
+
+.book-detail {
+    background-color: white;
+    min-height: 100vh;
+    padding: 40px 60px 0px 30px;
+}

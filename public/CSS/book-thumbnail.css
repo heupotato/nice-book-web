@@ -1,0 +1,31 @@
+.book-card {
+  border: none;
+}
+.book-thumbnail-container {
+  float: left;
+  width: 20vw;
+  height: 600px;
+  margin: 10px;
+  background-color: white;
+  justify-content: center;
+}
+
+.img-not-found {
+  display: block;
+  margin: auto;
+}
+
+.search-page {
+  min-height: 100vh;
+  margin: 20px 20px;
+}
+
+.image-thumbnail {
+  width: auto;
+  height: 400px;
+}
+
+.img-loading {
+  display: block;
+  margin: 0 auto;
+}
